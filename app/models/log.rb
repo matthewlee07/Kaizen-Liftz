@@ -6,5 +6,5 @@ class Log < ApplicationRecord
 
     belongs_to :user
     belongs_to :regiment
-  
+    has_many :log_entries, dependent: :destroy
 end

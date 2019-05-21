@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  log: one
+  start_time: 2019-05-21 17:45:57
+  stop_time: 2019-05-21 17:45:57
+  weight: 5
+  sets: 5
+  reps: 5
+  comments: MyText
+
+two:
+  log: two
+  start_time: 2019-05-21 17:45:57
+  stop_time: 2019-05-21 17:45:57
+  weight: 1
+  sets: 1
+  reps: 1
+  comments: MyText

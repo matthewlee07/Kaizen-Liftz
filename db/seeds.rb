@@ -97,3 +97,13 @@ Log.create!([
     { user_id: 2, regiment_id: 1 },
     { user_id: 2, regiment_id: 3 },
 ])
+
+LogEntry.create!([
+    { log_id: 1, start_time: "2019-05-21 15:48:28", stop_time: "2019-05-21 16:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 1, start_time: "2019-05-21 13:48:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 2, start_time: "2019-05-21 15:30:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 2, start_time: "2019-05-21 15:30:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 3, start_time: "2019-05-21 15:30:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 4, start_time: "2019-05-21 15:30:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 },
+    { log_id: 5, start_time: "2019-05-21 15:30:28", stop_time: "2019-05-21 15:48:28", weight: 10, sets: 5, reps: 5 }
+])
