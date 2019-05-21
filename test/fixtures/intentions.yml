@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise_id: 1
+  muscle_id: 11
+  primary_muscle: true
+
+two:
+  exercise: 2
+  muscle: 2
+  primary_muscle: false

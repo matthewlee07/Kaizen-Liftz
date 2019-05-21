@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_182537) do
+ActiveRecord::Schema.define(version: 2019_05_21_203031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_05_21_182537) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "intentions", force: :cascade do |t|
+    t.bigint "exercise_id"
+    t.bigint "muscle_id"
+    t.boolean "primary_muscle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_intentions_on_exercise_id"
+    t.index ["muscle_id"], name: "index_intentions_on_muscle_id"
   end
 
   create_table "muscles", force: :cascade do |t|
@@ -46,4 +56,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_182537) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "intentions", "exercises"
+  add_foreign_key "intentions", "muscles"
 end
