@@ -89,3 +89,11 @@ Regiment.create!([
     { exercise_id: 9,  workout_id: 3, weight: 10, sets: 5, reps: 5 },
     { exercise_id: 14, workout_id: 3, weight: 10, sets: 5, reps: 5 }
 ])
+
+Log.create!([
+    { user_id: 1, regiment_id: 1 },
+    { user_id: 1, regiment_id: 2 },
+    { user_id: 2, regiment_id: 1 },
+    { user_id: 2, regiment_id: 1 },
+    { user_id: 2, regiment_id: 3 },
+])
