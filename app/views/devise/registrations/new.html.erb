@@ -1,6 +1,6 @@
 <div class="container-fluid main">
     <div class="row justify-content-center ">
-        <div class="col-sm-10 devise-form rounded">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
             <h2>Sign up</h2>
 
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -25,7 +25,7 @@
             </div>
             
             <div class="actions">
-                <%= f.submit "Sign up", class:"btn btn-primary" %>
+                <%= f.submit "Sign up", class:"btn btn-warning my-2" %>
             </div>
             <% end %>
 

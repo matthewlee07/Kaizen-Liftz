@@ -1,0 +1,19 @@
+<div class="container-fluid main">
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+            <h1 class="text-center">Muscles</h1>
+            <%= render 'shared/paginate', :@profile => @muscles%>
+            <ul class="list-unstyled bg-secondary rounded">
+                <% @muscles.each do |muscle| %>
+                <li class="m-2 p-1">
+                    <%= link_to muscle.name, muscle, {:class => "text-light pl-5"}  %>
+                </li>
+                <% end %>
+            </ul>
+            <%= render 'shared/paginate', :@profile => @muscles%>
+            <div class="text-center mt-2">
+                <%= link_to "Add muscle", new_muscle_path, class: "btn btn-lg btn-outline-warning" %>
+            </div>
+        </div>
+    </div>
+</div> 
