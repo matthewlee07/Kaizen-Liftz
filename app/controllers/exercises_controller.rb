@@ -18,6 +18,7 @@ class ExercisesController < ApplicationController
     # READ
     def show
         @exercise = Exercise.find(params[:id])
+        @intentions = Intention.where(exercise_id: @exercise.id)
     end
 
     def index

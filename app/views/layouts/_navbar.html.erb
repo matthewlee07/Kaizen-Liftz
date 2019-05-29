@@ -2,7 +2,7 @@
   <%= link_to ('<i class="fas fa-dumbbell text-warning fa-2x navbar-brand"> Kaizen Liftz</i>').html_safe, root_path %>
   <div class="ml-auto">
     <% if user_signed_in? %>
-        <%= link_to 'Edit profile', edit_user_registration_path, class:"btn btn-outline-light text-capitalize" %>
+        <%= link_to "User Settings", edit_user_registration_path, class:"btn btn-outline-light text-capitalize" %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-outline-light text-capitalize" %>
     <% else %>
         <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-light text-capitalize" %>
