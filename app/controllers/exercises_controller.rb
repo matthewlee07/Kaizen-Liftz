@@ -1,25 +1,24 @@
 class ExercisesController < ApplicationController
+    before_action :authenticate_user!, only: [:create, :new]
 
 # CREATE
-    # def create
-    #     @exercise = exercise.new(exercise_params)
-    #     if @exercise.save
-    #     flash[:success] = "Created exercise"
-    #     redirect_to @exercise
-    #     else
-    #     render :new
-    #     end
-    # end
+    def create
+        @exercise = Exercise.new(exercise_params)
+        if @exercise.save
+            redirect_to @exercise
+        else
+            render :new
+        end
+    end
 
-    # def new
-    #     @exercise = exercise.new if @exercise == nil
-    # end
+    def new
+        @exercise = Exercise.new if @exercise == nil
+    end
 
     # READ
-    # def show
-    #     @exercise = exercise.find(params[:id])
-    #     @projects = @exercise.projects
-    # end
+    def show
+        @exercise = Exercise.find(params[:id])
+    end
 
     def index
         @exercises = Exercise.paginate(page: params[:page], :per_page => 10)
@@ -27,13 +26,13 @@ class ExercisesController < ApplicationController
 
     # UPDATE
     # def edit
-    #     @exercise = exercise.find(params[:id])
+    #     @exercise = Exercise.find(params[:id])
     # end
 
     # def update
-    #     @exercise = exercise.find(params[:id])
+    #     @exercise = Exercise.find(params[:id])
     #     if @exercise.update_attributes(exercise_params)
-    #     flash[:success] = "Updated exercise"
+    # 
     #     redirect_to @exercise
     #     else
     #     render 'edit'
@@ -42,13 +41,13 @@ class ExercisesController < ApplicationController
 
     # DESTROY
     # def destroy
-    #     exercise.find(params[:id]).destroy
-    #     flash[:success] = "Deleted exercise"
+    #     Exercise.find(params[:id]).destroy
+    # 
     #     redirect_to exercises_url
     # end
     
-    # private
-    # def exercise_params
-    #     params.require(:exercise).permit(:company, :address, :city, :state, :zip)
-    # end
+    private
+    def exercise_params
+        params.require(:exercise).permit(:name, :comments)
+    end
 end
