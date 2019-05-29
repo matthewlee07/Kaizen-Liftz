@@ -1,0 +1,19 @@
+<div class="container-fluid main">
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+            <h1 class="text-center">Exercises</h1>
+            <%= render 'shared/paginate', :@profile => @exercises%>
+            <ul class="list-unstyled bg-secondary rounded">
+                <% @exercises.each do |exercise| %>
+                <li class="m-2 p-1">
+                    <%= link_to exercise.name, exercise, {:class => "text-light pl-5 "}  %>
+                </li>
+                <% end %>
+            </ul>
+            <%= render 'shared/paginate', :@profile => @exercises%>
+            <div class="text-center mt-2">
+                <%= link_to "Add exercise", new_exercise_path, class: "btn btn-lg btn-outline-warning" %>
+            </div>
+        </div>
+    </div>
+</div> 
