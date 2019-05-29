@@ -1,25 +1,24 @@
 class MusclesController < ApplicationController
+    before_action :authenticate_user!, only: [:create, :new]
 
     # CREATE
-    # def create
-    #     @muscle = muscle.new(muscle_params)
-    #     if @muscle.save
-    #     flash[:success] = "Created muscle"
-    #     redirect_to @muscle
-    #     else
-    #     render :new
-    #     end
-    # end
+    def create
+        @muscle = Muscle.new(muscle_params)
+        if @muscle.save
+            redirect_to @muscle
+        else
+            render :new
+        end
+    end
 
-    # def new
-    #     @muscle = muscle.new if @muscle == nil
-    # end
+    def new
+        @muscle = Muscle.new if @muscle == nil
+    end
 
     # READ
-    # def show
-    #     @muscle = muscle.find(params[:id])
-    #     @projects = @muscle.projects
-    # end
+    def show
+        @muscle = Muscle.find(params[:id])
+    end
 
     def index
         @muscles = Muscle.paginate(page: params[:page], :per_page => 10)
@@ -27,13 +26,13 @@ class MusclesController < ApplicationController
 
     # UPDATE
     # def edit
-    #     @muscle = muscle.find(params[:id])
+    #     @muscle = Muscle.find(params[:id])
     # end
 
     # def update
-    #     @muscle = muscle.find(params[:id])
+    #     @muscle = Muscle.find(params[:id])
     #     if @muscle.update_attributes(muscle_params)
-    #     flash[:success] = "Updated muscle"
+
     #     redirect_to @muscle
     #     else
     #     render 'edit'
@@ -42,13 +41,13 @@ class MusclesController < ApplicationController
 
     # DESTROY
     # def destroy
-    #     muscle.find(params[:id]).destroy
-    #     flash[:success] = "Deleted muscle"
+    #     Muscle.find(params[:id]).destroy
+
     #     redirect_to muscles_url
     # end
     
-    # private
-    # def muscle_params
-    #     params.require(:muscle).permit(:company, :address, :city, :state, :zip)
-    # end
+    private
+    def muscle_params
+        params.require(:muscle).permit(:name)
+    end
 end

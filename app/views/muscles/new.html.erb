@@ -1,0 +1,18 @@
+<div class="container-fluid main">
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+            <h1 class="text-light">Add Muscle</h1>
+
+            <%= form_for(@muscle) do |f| %>
+            <div class="form-group">
+                <%= render 'shared/error_messages', :@profile => @muscle %>
+
+                <%= f.label :name %>
+                <%= f.text_field :name, autofocus: true, class: 'form-control'%>
+
+                <%= f.submit "Create muscle", class: "btn btn-warning my-2" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

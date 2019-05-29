@@ -1,7 +1,7 @@
 class ExercisesController < ApplicationController
     before_action :authenticate_user!, only: [:create, :new]
 
-# CREATE
+    # CREATE
     def create
         @exercise = Exercise.new(exercise_params)
         if @exercise.save

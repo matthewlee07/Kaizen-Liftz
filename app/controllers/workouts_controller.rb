@@ -1,25 +1,24 @@
 class WorkoutsController < ApplicationController
+    before_action :authenticate_user!, only: [:create, :new]
 
- # CREATE
-    # def create
-    #     @workout = workout.new(workout_params)
-    #     if @workout.save
-    #     flash[:success] = "Created workout"
-    #     redirect_to @workout
-    #     else
-    #     render :new
-    #     end
-    # end
+    # CREATE
+    def create
+        @workout = Workout.new(workout_params)
+        if @workout.save
+            redirect_to @workout
+        else
+            render :new
+        end
+    end
 
-    # def new
-    #     @workout = workout.new if @workout == nil
-    # end
+    def new
+        @workout = Workout.new if @workout == nil
+    end
 
     # READ
-    # def show
-    #     @workout = workout.find(params[:id])
-    #     @projects = @workout.projects
-    # end
+    def show
+        @workout = Workout.find(params[:id])
+    end
 
     def index
         @workouts = Workout.paginate(page: params[:page], :per_page => 10)
@@ -27,13 +26,13 @@ class WorkoutsController < ApplicationController
 
     # UPDATE
     # def edit
-    #     @workout = workout.find(params[:id])
+    #     @workout = Workout.find(params[:id])
     # end
 
     # def update
-    #     @workout = workout.find(params[:id])
+    #     @workout = Workout.find(params[:id])
     #     if @workout.update_attributes(workout_params)
-    #     flash[:success] = "Updated workout"
+
     #     redirect_to @workout
     #     else
     #     render 'edit'
@@ -42,13 +41,13 @@ class WorkoutsController < ApplicationController
 
     # DESTROY
     # def destroy
-    #     workout.find(params[:id]).destroy
-    #     flash[:success] = "Deleted workout"
+    #     Workout.find(params[:id]).destroy
+
     #     redirect_to workouts_url
     # end
     
     # private
-    # def workout_params
-    #     params.require(:workout).permit(:company, :address, :city, :state, :zip)
-    # end
+    def workout_params
+        params.require(:workout).permit(:name)
+    end
 end
