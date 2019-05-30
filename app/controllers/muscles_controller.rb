@@ -25,26 +25,26 @@ class MusclesController < ApplicationController
     end
 
     # UPDATE
-    # def edit
-    #     @muscle = Muscle.find(params[:id])
-    # end
+    def edit
+        @muscle = Muscle.find(params[:id])
+    end
 
-    # def update
-    #     @muscle = Muscle.find(params[:id])
-    #     if @muscle.update_attributes(muscle_params)
+    def update
+        @muscle = Muscle.find(params[:id])
+        if @muscle.update_attributes(muscle_params)
 
-    #     redirect_to @muscle
-    #     else
-    #     render 'edit'
-    #     end
-    # end
+        redirect_to @muscle
+        else
+        render 'edit'
+        end
+    end
 
     # DESTROY
-    # def destroy
-    #     Muscle.find(params[:id]).destroy
+    def destroy
+        Muscle.find(params[:id]).destroy
 
-    #     redirect_to muscles_url
-    # end
+        redirect_to muscles_url
+    end
     
     private
     def muscle_params
