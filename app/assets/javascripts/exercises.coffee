@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+@bind_add_muscle_item = ->    
+    $('body').on 'click', '#add_muscle', (e) ->
+        e.stopPropagation
+        $('.muscle_set').append($('.muscle_set_item_container').html())        
+    return
+return

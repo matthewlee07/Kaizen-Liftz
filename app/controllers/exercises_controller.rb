@@ -14,13 +14,12 @@ class ExercisesController < ApplicationController
     def new
         @muscle_options = Muscle.all.map{|muscle|[muscle.name, muscle.id]}
         @exercise = Exercise.new if @exercise == nil
+        @exercise.intentions.build
     end
 
     # READ
     def show
         @exercise = Exercise.find(params[:id])
-        @primary = @exercise.intentions.where(primary_muscle:true)
-        @secondary = @exercise.intentions.where(primary_muscle:false)
     end
 
     def index

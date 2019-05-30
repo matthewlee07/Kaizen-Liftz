@@ -10,20 +10,26 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
-                <h5 class="text-danger">nested form?</h5>
+                <div class="muscle_set">
+                    <div class="muscle_set_item_container my-4" >
+                        <div class="muscle_set_item bg-secondary rounded" >
+                            <%= f.label :muscle %>
+                            <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
 
-                <%= f.label :muscle %>
-                <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
-                
-                <span class="text-danger my-2">
-                    <button class="btn-danger " disabled>[ ] Primary Muscle [default] Secondary</button>
-                </span>
+                            <div>
+                                <%= f.fields_for :intentions do |intention| %>                    
+                                    <%= intention.check_box :primary_muscle %>
+                                    <%= intention.label :primary_muscle %>
+                                <% end %>
+                                <%= link_to 'delete', '#', id: 'remove_muscle', class: 'btn btn-danger' %>            
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
 
-                <span class="text-danger d-block my-2">
-                    <button class="btn-danger " disabled>Add Muscle</button>
-                </span>
-                <span class="text-danger d-block my-2">
-                    <button class="btn-danger " disabled>Remove Muscle</button>
+                <span class=" d-block my-2">
+                    <%= link_to 'Add Muscle', '#', id: 'add_muscle', class: 'btn btn-warning' %>
                 </span>
 
                 <%= f.label :comments %>
@@ -35,3 +41,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    bind_add_muscle_item();    
+</script>

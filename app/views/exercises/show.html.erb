@@ -1,46 +1,40 @@
 <div class="container-fluid main">
-    <div class="row justify-content-center ">
-        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <h1>Exercise</h1>
-            <span class="d-block">
-                Name: 
-                <span class="text-light">
-                    <%= @exercise.name %>
-                </span>
-            </span>
-            <span class="d-block">
-                Comments: 
-                <span class="text-light">
-                    <%= @exercise.comments %>
-                </span>
-            </span>
-            <span class="d-block text-danger">
-                intentions.inspect: 
-                <span class="">
-                    <%= @exercise.intentions.inspect %>
-                </span>
-            </span>
-            <span class="d-block">
-                primary
-                <span class="text-light">
-                    <%= @primary %>
-                </span>
-            </span>
-            <span class="d-block">
-                secondary
-                <span class="text-light">
-                    <%= @secondary %>
-                </span>
-            </span>
+  <div class="row justify-content-center ">
+    <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+      <h1>Exercise</h1>
+      <span class="d-block">
+        Name:
+        <span class="text-light">
+          <%= @exercise.name %>
+        </span>
+      </span>
+      <span class="d-block">
+        Comments:
+        <span class="text-light">
+          <%= @exercise.comments %>
+        </span>
 
-            <h2 class="text-danger">Admin only:</h2>
-            <h6 class="text-danger">Don't have admin built</h6>
-            <span class="text-danger my-2">
-                <button class="btn-danger " disabled>edit</button>
-            </span>
-            <span class="text-danger my-2">
-                <button class="btn-danger " disabled>delete</button>
-            </span>
-        </div>
+        <ul class="text-light list-unstyled list-inline">
+          <span class="text-warning"> primary:</span>
+          <% @exercise.muscle_intentions(:primary).each do |intention| %>
+            <li class="list-inline-item"><%= intention.muscle.name %>.</li>
+          <% end %>
+          <br />
+          <span class="text-warning"> secondary:</span>
+          <% @exercise.muscle_intentions(:secondary).each do |intention| %>
+            <li class="list-inline-item"><%= intention.muscle.name %>.</li>
+          <% end %>
+        </ul>
+      </span>
+
+      <h2 class="text-danger">Admin only:</h2>
+      <h6 class="text-danger">Don't have admin built</h6>
+      <span class="text-danger my-2">
+        <button class="btn-danger " disabled>edit</button>
+      </span>
+      <span class="text-danger my-2">
+        <button class="btn-danger " disabled>delete</button>
+      </span>
     </div>
+  </div>
 </div>

@@ -6,6 +6,8 @@ class Workout < ApplicationRecord
     has_many :regiments 
     has_many :exercises, :through => :regiments
 
+    accepts_nested_attributes_for :regiments, allow_destroy: true
+
     private 
     def titleize_name
         self.name = name.titleize
