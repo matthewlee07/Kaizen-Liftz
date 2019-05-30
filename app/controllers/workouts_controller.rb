@@ -12,6 +12,7 @@ class WorkoutsController < ApplicationController
     end
 
     def new
+        @exercise_options = Exercise.all.map{|exercise|[exercise.name, exercise.id]}
         @workout = Workout.new if @workout == nil
     end
 

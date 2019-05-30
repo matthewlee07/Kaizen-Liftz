@@ -10,10 +10,21 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
+                <h5 class="text-danger">nested form?</h5>
+
                 <%= f.label :muscle %>
                 <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
+                
+                <span class="text-danger my-2">
+                    <button class="btn-danger " disabled>[ ] Primary Muscle [default] Secondary</button>
+                </span>
 
-                <span class="text-danger d-block p-4">need to dynamically add/remove more muscles && form should check for duplicate muscle && required muscle/name. add exercise name to exercise table, add to intention table. primary/secondary muscle?</span>
+                <span class="text-danger d-block my-2">
+                    <button class="btn-danger " disabled>Add Muscle</button>
+                </span>
+                <span class="text-danger d-block my-2">
+                    <button class="btn-danger " disabled>Remove Muscle</button>
+                </span>
 
                 <%= f.label :comments %>
                 <%= f.text_field :comments, autofocus: true, class: 'form-control'%>
