@@ -10,6 +10,11 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
+                <%= f.label :muscle %>
+                <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
+
+                <span class="text-danger d-block p-4">need to dynamically add/remove more muscles && form should check for duplicate muscle && required muscle/name. add exercise name to exercise table, add to intention table. primary/secondary muscle?</span>
+
                 <%= f.label :comments %>
                 <%= f.text_field :comments, autofocus: true, class: 'form-control'%>
 

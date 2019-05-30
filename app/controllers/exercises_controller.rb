@@ -5,13 +5,14 @@ class ExercisesController < ApplicationController
     def create
         @exercise = Exercise.new(exercise_params)
         if @exercise.save
-            redirect_to @exercise
+            redirect_to exercises_path
         else
             render :new
         end
     end
 
     def new
+        @muscle_options = Muscle.all.map{|muscle|[muscle.name, muscle.id]}
         @exercise = Exercise.new if @exercise == nil
     end
 
@@ -22,7 +23,7 @@ class ExercisesController < ApplicationController
     end
 
     def index
-        @exercises = Exercise.paginate(page: params[:page], :per_page => 10)
+        @exercises = Exercise.order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     # UPDATE
@@ -49,6 +50,6 @@ class ExercisesController < ApplicationController
     
     private
     def exercise_params
-        params.require(:exercise).permit(:name, :comments)
+        params.require(:exercise).permit(:name, :comments, :muscle_id)
     end
 end

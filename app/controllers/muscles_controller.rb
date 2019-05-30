@@ -5,7 +5,7 @@ class MusclesController < ApplicationController
     def create
         @muscle = Muscle.new(muscle_params)
         if @muscle.save
-            redirect_to @muscle
+            redirect_to muscles_path
         else
             render :new
         end
@@ -21,7 +21,7 @@ class MusclesController < ApplicationController
     end
 
     def index
-        @muscles = Muscle.paginate(page: params[:page], :per_page => 10)
+        @muscles = Muscle.order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     # UPDATE

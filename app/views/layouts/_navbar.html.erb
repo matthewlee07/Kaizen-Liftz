@@ -2,8 +2,20 @@
   <%= link_to ('<i class="fas fa-dumbbell text-warning fa-2x navbar-brand"> Kaizen Liftz</i>').html_safe, root_path %>
   <div class="ml-auto">
     <% if user_signed_in? %>
-        <%= link_to "User Settings", edit_user_registration_path, class:"btn btn-outline-light text-capitalize" %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-outline-light text-capitalize" %>
+        <div class="btn-group">
+            <div class="dropdown mr-4">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                    My Account
+                </button>
+                <div class="dropdown-menu bg-transparent dropdown-menu-right text-right" >
+                    <%= link_to "My Workouts", workouts_path, class:"text-light text-capitalize d-block" %>
+                    <span class="text-danger">should go to my own workouts</span>
+                    <%= link_to "User Settings", edit_user_registration_path, class:"text-light text-capitalize d-block" %>
+                </div>
+            </div>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-outline-light text-capitalize" %>
+        </div>
+        
     <% else %>
         <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-outline-light text-capitalize" %>
         <%= link_to "Sign In", new_user_session_path, class:"btn btn-outline-light text-capitalize" %>
