@@ -40,11 +40,10 @@ class MusclesController < ApplicationController
     end
 
     # DESTROY
-    def destroy
-        Muscle.find(params[:id]).destroy
-
-        redirect_to muscles_url
-    end
+    # def destroy
+    #     Muscle.find(params[:id]).destroy
+    #     redirect_to muscles_url
+    # end
     
     private
     def muscle_params

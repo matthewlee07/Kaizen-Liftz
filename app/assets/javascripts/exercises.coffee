@@ -1,6 +1,7 @@
 @bind_add_muscle_item = ->    
-    $('body').on 'click', '#add_muscle', (e) ->
+    $('#add_muscle').click (e) ->
         e.stopPropagation
-        $('.muscle_set').append($('.muscle_set_item_container').html())        
+        lastRepeatingGroup = $('.muscle_set_item').last()
+        lastRepeatingGroup.clone().insertAfter(lastRepeatingGroup)
+        return
     return
-return

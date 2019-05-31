@@ -17,6 +17,7 @@
                             <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
 
                             <div>
+                            <h6 class="text-danger">should list every primary/secondary muscle & checked. does appear to check once for each muscle</h6>
                                 <%= f.fields_for :intentions do |intention| %>                    
                                     <%= intention.check_box :primary_muscle %>
                                     <%= intention.label :primary_muscle %>

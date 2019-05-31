@@ -27,19 +27,19 @@ class ExercisesController < ApplicationController
     end
 
     # UPDATE
-    # def edit
-    #     @exercise = Exercise.find(params[:id])
-    # end
+    def edit
+        @exercise = Exercise.find(params[:id])
+    end
 
-    # def update
-    #     @exercise = Exercise.find(params[:id])
-    #     if @exercise.update_attributes(exercise_params)
-    # 
-    #     redirect_to @exercise
-    #     else
-    #     render 'edit'
-    #     end
-    # end
+    def update
+        @exercise = Exercise.find(params[:id])
+        if @exercise.update_attributes(exercise_params)
+    
+        redirect_to @exercise
+        else
+        render 'edit'
+        end
+    end
 
     # DESTROY
     # def destroy
@@ -50,6 +50,6 @@ class ExercisesController < ApplicationController
     
     private
     def exercise_params
-        params.require(:exercise).permit(:name, :comments, :muscle_id)
+        params.require(:exercise).permit(:name, :comments)
     end
 end

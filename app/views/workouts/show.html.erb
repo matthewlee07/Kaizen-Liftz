@@ -13,13 +13,32 @@
                 <span class="text-light d-block">
                     <span class="text-danger ">(weight when added)/sets/reps +/-</span>
                 </span>
+                <%#  %>
+                <ul class="text-light list-unstyled list-inline">
+                    <span class="text-warning"> Exercises:</span>
+                    <% @workout.exercise_regiments(@exercise).each do |regiment| %>
+                    <li class="list-inline-item"><%= regiment.exercise.name %>.</li>
+                    <% end %>
+                </ul>
+                <%#  %>
             </span>
             <span class="text-danger d-block p-4">
                 list all exercises in the workout.
                 buttons add remove exercise
             </span>
-            <button class="btn btn-outline-warning" disabled>Add to account</button>
-            <span class="text-danger">Should add workout to user account</span>
+
+            <div>
+                <% if user_signed_in?%>
+                    <h6 class="text-danger">doesn't work:</h6>
+                    <button class="btn btn-outline-warning d-block mb-4">Add to account</button>
+                <% end %>
+                <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning"  %>
+                <a href="/workouts/<%=@workout.id %>/edit" class="btn btn-outline-warning">
+                    Edit
+                </a>
+                <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger", "disabled"] %>
+            </div>
+
         </div>
     </div>
 </div>
