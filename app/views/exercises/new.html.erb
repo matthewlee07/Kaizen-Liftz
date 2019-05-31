@@ -11,7 +11,7 @@
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
                 <div class="muscle_set">
-                    <div class="muscle_set_item_container my-4 bg-secondary rounded">
+                    <div class="muscle_set_item_container my-4 bg-secondary rounded" style="border:2px solid red">
                         <div class="muscle_set_item rounded" >
                             <%= f.label :muscle %>
                             <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
@@ -20,20 +20,19 @@
                                 <%= f.fields_for :intentions do |intention| %>                    
                                     <%= intention.check_box :primary_muscle %>
                                     <%= intention.label :primary_muscle %>
+                                    <h6 class="text-light">default false, send information to intentions table, through "accepts_nested_attributes_for"</h6>
                                 <% end %>
                                 
                             </div>
                             
                         </div>
                         <span class=" d-block text-right">
-                            <%= link_to 'Add Muscle', '#', id: 'add_muscle', class: 'btn btn-outline-warning' %>
-                            <%= link_to 'Remove Muscle', '#', id: 'remove_muscle', class: 'btn btn-danger' %>     
+                            <%= link_to 'Remove', '#', id: 'remove_muscle', class: 'btn btn-danger' %>     
                         </span>                        
                     </div>
-                    <h6 class="text-danger">^add muscle & delete don't work^</h6>
+                    <%= link_to 'Add Muscle', '#', id: 'add_muscle', class: 'btn btn-outline-warning' %>
+                    <h6 class="text-danger" style="border:2px solid red">^add muscle & remove don't work^</h6>
                 </div>
-
-                
 
                 <%= f.label :comments %>
                 <%= f.text_field :comments, autofocus: true, class: 'form-control'%>

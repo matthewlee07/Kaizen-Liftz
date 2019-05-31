@@ -10,19 +10,33 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
-                <%= f.label :exercise %>
-                <%= f.select :exercises, Exercise.all.collect{|exercise|[exercise.name, exercise.id]}, {}, {:class => 'form-control'}%>
+                <div class="exercise_set">
+                    <div class="exercise_set_item_container my-4 secondary rounded" style="border:2px solid red">
+                    
+                        <%= f.label :exercise %>
+                        <%= f.select :exercises, Exercise.all.collect{|exercise|[exercise.name, exercise.id]}, {}, {:class => 'form-control'}%>
 
-                <span class="text-danger my-2 d-block">
-                    <button class="btn-danger" disabled>dropdown select Sets 1-100</button>
-                    <button class="btn-danger" disabled>dropdown select Reps 1-100</button>
-                </span>
+                        <span class="text-danger my-2 d-block">
+                            <button class="btn-danger" disabled>dropdown select Sets 1-100</button>
+                            <button class="btn-danger" disabled>dropdown select Reps 1-100</button>
+                        </span>
+                        
+                        <span class="text-danger d-block my-2">
+                            <button class="btn-danger " disabled>Remove Exercise</button>
+                        </span>   
+                    </div>
+                </div>
+                
                 <span class="text-danger d-block my-2">
                     <button class="btn-danger " disabled>Add Exercise</button>
                 </span>
-                <span class="text-danger d-block my-2">
-                    <button class="btn-danger " disabled>Remove Exercise</button>
-                </span>   
+            
+                <%#  %>
+
+
+
+
+                <%#  %>
 
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning" %>
                 <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>

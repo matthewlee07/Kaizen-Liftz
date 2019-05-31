@@ -27,19 +27,19 @@ class WorkoutsController < ApplicationController
     end
 
     # UPDATE
-    # def edit
-    #     @workout = Workout.find(params[:id])
-    # end
+    def edit
+        @workout = Workout.find(params[:id])
+    end
 
-    # def update
-    #     @workout = Workout.find(params[:id])
-    #     if @workout.update_attributes(workout_params)
+    def update
+        @workout = Workout.find(params[:id])
+        if @workout.update_attributes(workout_params)
 
-    #     redirect_to @workout
-    #     else
-    #     render 'edit'
-    #     end
-    # end
+        redirect_to @workout
+        else
+        render 'edit'
+        end
+    end
 
     # DESTROY
     # def destroy
