@@ -23,8 +23,9 @@
                 <span class="text-danger d-block my-2">
                     <button class="btn-danger " disabled>Remove Exercise</button>
                 </span>   
-                <button class="btn-danger d-block" disabled>Reset</button>
-                <%= f.submit "Create workout", class: "btn btn-warning my-2" %>
+
+                <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning" %>
+                <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>
                 <% end %>
             </div>
         </div>

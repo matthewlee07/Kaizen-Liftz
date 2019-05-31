@@ -36,7 +36,8 @@
                 <%= f.label :comments %>
                 <%= f.text_field :comments, autofocus: true, class: 'form-control'%>
 
-                <%= f.submit "Create exercise", class: "btn btn-outline-warning my-2" %>
+                <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning"  %>
+                <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>
                 <% end %>
             </div>
         </div>
