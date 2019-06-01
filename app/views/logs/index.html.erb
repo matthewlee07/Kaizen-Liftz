@@ -1,11 +1,9 @@
 <div class="container-fluid main">
     <div class="row justify-content-center ">
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <ul>
-                <li>my workouts</li>
-                <li></li>
-                <li></li>
-            </ul>
+            <% if user_signed_in? %>
+                <%= current_user.logs.map{|log| log.regiment.exercise.name} %>
+            <% end %>
         </div>
     </div>
 </div> 

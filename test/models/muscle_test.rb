@@ -14,10 +14,10 @@ class MuscleTest < ActiveSupport::TestCase
         assert_not @muscle.valid?
     end
     # field length validation
-    test "name should not be too long" do
-        @muscle.name = "a" * 38
-        assert_not @muscle.valid?
-    end
+    # test "name should not be too long" do
+    #     @muscle.name = "a" * 38
+    #     assert_not @muscle.valid?
+    # end
     test "name should not be too short" do
         @muscle.name = "a" * 1
         assert_not @muscle.valid?

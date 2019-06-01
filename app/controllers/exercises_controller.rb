@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
     # CREATE
     def create
         @exercise = Exercise.new(exercise_params)
-        if @exercise.save
+        if @exercise.save            
             redirect_to exercises_path
         else
             render :new
@@ -14,7 +14,6 @@ class ExercisesController < ApplicationController
     def new
         @muscle_options = Muscle.all.map{|muscle|[muscle.name, muscle.id]}
         @exercise = Exercise.new if @exercise == nil
-        @exercise.intentions.build
     end
 
     # READ
@@ -50,6 +49,6 @@ class ExercisesController < ApplicationController
     
     private
     def exercise_params
-        params.require(:exercise).permit(:name, :comments)
+        params.require(:exercise).permit(:name, :comments, intentions_attributes: [ :id, :muscle_id, :primary_muscle, :_destroy])
     end
 end
