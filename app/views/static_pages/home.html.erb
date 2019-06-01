@@ -13,3 +13,7 @@
         </div>
     </div>
 </div>
+
+<% if user_signed_in? %>
+    <%= current_user.logs.map{|log| log.regiment.exercise.name} %>
+<% end %>

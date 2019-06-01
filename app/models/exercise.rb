@@ -3,8 +3,8 @@ class Exercise < ApplicationRecord
 
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false }
     validates :comments, length: { maximum: 1000 }
-    validates :intentions, length: { maximum:100, minimum: 1 }
-    validates :muscles, uniqueness: true
+    # validates :intentions, length: { maximum:100, minimum: 1 }
+    # validates :muscles, uniqueness: true
 
     has_many :intentions, inverse_of: :exercise
     has_many :muscles, :through => :intentions

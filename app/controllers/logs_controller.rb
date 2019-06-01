@@ -23,7 +23,7 @@ class LogsController < ApplicationController
     # end
 
     def index
-        # @logs = Log.where(user_id: current_user.id)
+        @logs = Log.where(user_id: current_user.id)
     end
 
     # UPDATE
