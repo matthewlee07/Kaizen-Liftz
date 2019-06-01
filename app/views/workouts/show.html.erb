@@ -1,26 +1,25 @@
-<div class="container-fluid main">
+<div class="container-fluid main pb-5 mb-5">
     <div class="row justify-content-center ">
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <h1>Workout</h1>
-            <span class="d-block">
-                Name: 
+            <h1><%= @workout.name %></h1>
+
+            <span class="d-block" style="border:2px solid white">
+                Exercise: 
                 <span class="text-light">
-                    <%= @workout.name %>
-                </span>
-            </span>
-            <span class="d-block">
-                Exercise(s): 
-                <span class="text-light d-block">
                     <span class="text-danger ">(weight when added)/sets/reps +/-</span>
                 </span>
-                <%#  %>
+
                 <ul class="text-light list-unstyled list-inline">
                     <span class="text-warning"> Exercises:</span>
-                    <% @workout.exercise_regiments(@exercise).each do |regiment| %>
+
+                    workout.id: <%= @workout.regiments.inspect%>
+                    
+<br><br>
+                    <% @workout.exercise_regiments(@workout).each do |regiment| %>
                     <li class="list-inline-item"><%= regiment.exercise.name %>.</li>
                     <% end %>
                 </ul>
-                <%#  %>
+
             </span>
             <span class="text-danger d-block p-4">
                 list all exercises in the workout.
@@ -29,7 +28,6 @@
 
             <div>
                 <% if user_signed_in?%>
-                    <h6 class="text-danger">doesn't work:</h6>
                     <button class="btn btn-outline-warning d-block mb-4">Add to account</button>
                 <% end %>
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning"  %>

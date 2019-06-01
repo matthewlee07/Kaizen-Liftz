@@ -14,6 +14,7 @@ class ExercisesController < ApplicationController
     def new
         @muscle_options = Muscle.all.map{|muscle|[muscle.name, muscle.id]}
         @exercise = Exercise.new if @exercise == nil
+        @exercise.intentions.build
     end
 
     # READ
@@ -33,10 +34,9 @@ class ExercisesController < ApplicationController
     def update
         @exercise = Exercise.find(params[:id])
         if @exercise.update_attributes(exercise_params)
-    
-        redirect_to @exercise
+            redirect_to @exercise
         else
-        render 'edit'
+            render 'edit'
         end
     end
 

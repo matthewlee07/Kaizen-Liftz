@@ -1,28 +1,22 @@
-<div class="container-fluid main">
+<div class="container-fluid main pb-5 mb-5">
     <div class="row justify-content-center ">
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <h1 class="text-light">Add Workout</h1>
+            <h1 class="text-light">Edit <%= @workout.name %></h1>
 
             <%= form_for(@workout) do |f| %>
             <div class="form-group">
                 <%= render 'shared/error_messages', :@profile => @workout %>
-
                 <%= f.label :name %>
                 <%= f.text_field :name, autofocus: true, class: 'form-control'%>
 
-                <%= f.label :exercise %>
-                <%= f.select :exercises, Exercise.all.collect{|exercise|[exercise.name, exercise.id]}, {}, {:class => 'form-control'}%>
-
-                <span class="text-danger my-2 d-block">
-                    <button class="btn-danger" disabled>dropdown select Sets 1-100</button>
-                    <button class="btn-danger" disabled>dropdown select Reps 1-100</button>
-                </span>
-                <span class="text-danger d-block my-2">
-                    <button class="btn-danger " disabled>Add Exercise</button>
-                </span>
-                <span class="text-danger d-block my-2">
-                    <button class="btn-danger " disabled>Remove Exercise</button>
-                </span>   
+                <div class="exercise_set">
+                    <div class="exercise_set_item_container my-4" >
+                        <%= f.fields_for :regiments do |regiment| %>                    
+                            <%= render 'regiment_fields', f: regiment, exercises: :exercises %>
+                        <% end %>
+                    </div>
+                    <%= link_to_add_association 'Add exercise', f, :regiments, {:class=> "btn btn-outline-warning my-4"}%>
+                </div>
 
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning" %>
                 <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>

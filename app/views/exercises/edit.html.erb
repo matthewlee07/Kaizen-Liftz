@@ -1,42 +1,25 @@
-<div class="container-fluid main">
+<div class="container-fluid main pb-5 mb-5">
     <div class="row justify-content-center ">
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <h1 class="text-light">Add Exercise</h1>
+            <h1 class="text-light">Edit <%= @exercise.name%></h1>
 
             <%= form_for(@exercise) do |f| %>
             <div class="form-group">
                 <%= render 'shared/error_messages', :@profile => @exercise %>
 
-                <%= f.label :name %>
-                <%= f.text_field :name, autofocus: true, class: 'form-control'%>
-
                 <div class="muscle_set">
                     <div class="muscle_set_item_container my-4" >
-                        <div class="muscle_set_item bg-dark rounded" >
-                            <%= f.label :muscle %>
-                            <%= f.select :muscles, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
-
-                            <div>
-                            <h6 class="text-danger">should list every primary/secondary muscle & checked. does appear to check once for each muscle</h6>
-                                <%= f.fields_for :intentions do |intention| %>                    
-                                    <%= intention.check_box :primary_muscle %>
-                                    <%= intention.label :primary_muscle %>
-                                <% end %>
-                                <%= link_to 'delete', '#', id: 'remove_muscle', class: 'btn btn-danger' %>            
-                            </div>
-                            
-                        </div>
+                        <%= f.fields_for :intentions do |intention| %>                    
+                            <%= render 'intention_fields', f: intention, muscles: :muscles %>
+                        <% end %>
                     </div>
+                    <%= link_to_add_association 'Add Muscle', f, :intentions, {:class=> "btn btn-outline-warning my-4"}%>
                 </div>
-
-                <span class=" d-block my-2">
-                    <%= link_to 'Add Muscle', '#', id: 'add_muscle', class: 'btn btn-outline-warning' %>
-                </span>
-
+                <h6 class="text-danger">validation: must have muscle, must be unique muscle. must have primary.  must add new muscles to bottom</h6>
                 <%= f.label :comments %>
                 <%= f.text_field :comments, autofocus: true, class: 'form-control'%>
 
-                <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning"  %>
+                <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning" %>
                 <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>
                 <% end %>
             </div>

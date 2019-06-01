@@ -1,0 +1,11 @@
+<div class="nested-fields mt-2">
+    <%= f.label :exercise_id %>
+    <%= f.select :exercise_id, Exercise.all.collect{|exercise|[exercise.name, exercise.id]}, {}, {:class => 'form-control'}%>
+    <div class="clearfix mt-2">
+        <%= f.label :sets%>
+        <%= f.select :sets, (0..100) %>
+        <%= f.label :reps%>
+        <%= f.select :reps, (0..100) %>
+        <%= link_to_remove_association 'Remove exercise', f, class: 'btn btn-danger float-right' %>
+    </div>
+</div>

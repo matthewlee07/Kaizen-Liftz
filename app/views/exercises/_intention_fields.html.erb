@@ -1,7 +1,9 @@
-<div class="nested-fields">
+<div class="nested-fields mt-2">
     <%= f.label :muscle_id %>
     <%= f.select :muscle_id, Muscle.all.collect{|muscle|[muscle.name, muscle.id]}, {}, {:class => 'form-control'}%>
-    <%= f.check_box :primary_muscle %>
-    <%= f.label :primary_muscle %>
-    <%= link_to_remove_association 'Remove', f, class: 'btn btn-outline-warning' %>
+    <div class="clearfix mt-2">
+        <%= f.check_box :primary_muscle %>
+        <%= f.label :primary_muscle %>
+        <%= link_to_remove_association 'Remove Muscle', f, class: 'btn btn-danger float-right' %>
+    </div>
 </div>

@@ -14,6 +14,7 @@ class WorkoutsController < ApplicationController
     def new
         @exercise_options = Exercise.all.map{|exercise|[exercise.name, exercise.id]}
         @workout = Workout.new if @workout == nil
+        @workout.regiments.build
     end
 
     # READ
@@ -49,6 +50,6 @@ class WorkoutsController < ApplicationController
     
     # private
     def workout_params
-        params.require(:workout).permit(:name, :exercise_id)
+        params.require(:workout).permit(:name, :exercise_id, regiments_attributes: [ :id, :exercise_id, :workout_id, :weight, :sets, :reps, :_destroy])
     end
 end

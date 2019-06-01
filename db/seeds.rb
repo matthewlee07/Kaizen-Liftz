@@ -36,7 +36,7 @@ Muscle.create!([
     { name:'Pectoralis' },
     { name:'Quadriceps' },
     { name:'Trapezius' },
-    { name:'Triceps '}
+    { name:'Triceps'}
 ])
 
 Intention.create!([
