@@ -8,10 +8,6 @@ class Workout < ApplicationRecord
 
     accepts_nested_attributes_for :regiments, allow_destroy: true
 
-    def exercise_regiments(ex_id)
-        regiments.where(exercise_id: ex_id)
-    end
-
     private 
     def titleize_name
         self.name = name.titleize

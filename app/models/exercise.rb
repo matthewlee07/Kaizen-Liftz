@@ -11,7 +11,7 @@ class Exercise < ApplicationRecord
 
     accepts_nested_attributes_for :intentions, allow_destroy: true
 
-    def muscle_intentions(intention_type = nil)
+    def muscle_intentions(intention_type)
         intentions.where(primary_muscle: intention_type == :primary)
     end
 

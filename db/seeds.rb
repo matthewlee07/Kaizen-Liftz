@@ -1,4 +1,4 @@
-admin = User.new(email: "admin@email.com", password: "password")
+admin = User.new(email: "admin@email.com", password: "password", admin: true)
 admin.save!
 
 sample = User.new(email: "sampleuser@email.com", password: "password")
