@@ -22,7 +22,7 @@
                     <button class="btn btn-outline-warning d-block mb-4">Add to account</button>
                 <% end %>
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning"  %>
-                <% if current_user.try.(:admin?)%>
+                <% if current_user.try(:admin?)%>
                     <a href="/workouts/<%=@workout.id %>/edit" class="btn btn-outline-warning">
                         Edit
                     </a>
