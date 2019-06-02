@@ -23,7 +23,10 @@ class LogsController < ApplicationController
     # end
 
     def index
-        @logs = Log.where(user_id: current_user.id)
+        @log = Log.find(params[:id])
+        @logs = Log.order(updated_at: :asc).paginate(page: params[:page], :per_page => 10)
+        # @workouts = Workout.order(updated_at: :asc).paginate(page: params[:page], :per_page => 10)
+        # order updated_at
     end
 
     # UPDATE

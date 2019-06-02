@@ -21,11 +21,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    # ADMIN ONLY
-    # def index 
-    #     @users = User.paginate(page: params[:page], :per_page => 10)
-    # end
-
     # UPDATE
     def edit
         @user = User.find(params[:id])
