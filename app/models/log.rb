@@ -7,9 +7,5 @@ class Log < ApplicationRecord
     belongs_to :user
     belongs_to :regiment
     has_many :log_entries, dependent: :destroy
-
-    def workout_regiments(user_id)
-        regiments.where(user_id: user_id)
-    end
-
+    
 end
