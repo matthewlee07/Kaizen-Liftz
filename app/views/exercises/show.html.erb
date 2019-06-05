@@ -2,36 +2,44 @@
   <div class="row justify-content-center ">
     <div class="col-sm-10 devise-form rounded bg-dark text-warning">
       <h1><%= @exercise.name %></h1>
-      
-      <span class="d-block">
-        Comments:
-        <span class="text-light">
-          <%= @exercise.comments %>
-        </span>
 
+      <div class="d-block mb-2">
         <ul class="text-light list-unstyled list-inline">
-          <span class="text-warning"> Primary muscles:</span>
-          <% @exercise.muscle_intentions(:primary).each do |intention| %>
-            <li class="list-inline-item" style="margin-right: -2px;"><%= intention.muscle.name %>.</li>
-          <% end %>
-          <br />
-          <span class="text-warning"> Secondary muscles:</span>
-          <% @exercise.muscle_intentions(:secondary).each do |intention| %>
-            <li class="list-inline-item" style="margin-right: -2px;"><%= intention.muscle.name %>.</li>
-          <% end %>
+          <div class="my-2">
+            <div class="text-warning"> Primary muscles:</div>
+            <% @exercise.muscle_intentions(:primary).each do |intention| %>
+            <li class="list-inline-item" style="margin-right: -2px">
+              <%= intention.muscle.name %>.
+            </li>
+            <% end %>
+          </div>
+          <div class="my-2">
+            <div class="text-warning"> Secondary muscles:</div>
+            <% @exercise.muscle_intentions(:secondary).each do |intention| %>
+            <li class="list-inline-item" style="margin-right: -2px">
+              <%= intention.muscle.name %>.
+            </li>
+            <% end %>
+          </div>
         </ul>
-      </span>
-
-       <div>
-        <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning"  %>
-        <% if current_user.try(:admin?)%>
-            <a href="/exercises/<%=@exercise.id %>/edit" class="btn btn-outline-warning">
-                Edit
-            </a>
-            <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
-        <% end %>
+        Comments:
+        <div class="text-light">
+          <%= @exercise.comments %>
+        </div>
       </div>
 
+      <div>
+        <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning" %>
+        <% if current_user.try(:admin?)%>
+        <a
+          href="/exercises/<%=@exercise.id %>/edit"
+          class="btn btn-outline-warning"
+        >
+          Edit
+        </a>
+        <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You
+        sure?" }, class: ["btn","btn-danger"] %> <% end %>
+      </div>
     </div>
   </div>
 </div>

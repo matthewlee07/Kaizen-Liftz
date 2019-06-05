@@ -4,13 +4,12 @@
     <% if user_signed_in? %>
         <div class="btn-group">
             <div class="dropdown mr-4">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown">
                     My Account
                 </button>
-                <div class="dropdown-menu bg-transparent dropdown-menu-right text-right" >
-                    <%= link_to "My Workouts", workouts_path, class:"text-light text-capitalize d-block" %>
-                    <span class="text-danger">should go to my own workouts</span>
-                    <%= link_to "User Settings", edit_user_registration_path, class:"text-light text-capitalize d-block" %>
+                <div class="dropdown-menu bg-light dropdown-menu-right text-right" >
+                    <%= link_to "My Workouts", get_workouts_path(current_user.id), class:"text-dark text-capitalize d-block pr-4" %>
+                    <%= link_to "My Settings", edit_user_registration_path, class:"text-dark text-capitalize d-block pr-4" %>
                 </div>
             </div>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-outline-light text-capitalize" %>

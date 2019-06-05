@@ -7,4 +7,8 @@ class User < ApplicationRecord
     has_many :logs
     has_many :regiments, :through => :logs
 
+    def get_workouts
+        logs.map(&:regiment).map(&:workout).uniq
+    end
+
 end

@@ -15,7 +15,7 @@
                             <%= render 'regiment_fields', f: regiment, exercises: :exercises %>
                         <% end %>
                     </div>
-                    <%= link_to_add_association 'Add exercise', f, :regiments, {:class=> "btn btn-outline-warning my-4"}%>
+                    <%= link_to_add_association 'New Exercise', f, :regiments, {:class=> "btn btn-outline-warning my-4"}%>
                 </div>
 
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning" %>

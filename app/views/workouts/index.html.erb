@@ -3,18 +3,26 @@
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
             <h1 class="text-center">Workouts</h1>
             <%= render 'shared/paginate', :@profile => @workouts%>
-            <ul class="list-unstyled bg-secondary rounded">
+            <ul class="list-unstyled bg-secondary rounded list-inline">
                 <% @workouts.each do |workout| %>
-                    <li class="p-2">
-                        <%= link_to workout.name, workout, {:class => "text-light pl-5 font-weight-bold text-left"} %>
-                    </li>
+                    <div class="container">
+                        <li class="pt-4 list-inline-item">
+                            <%= link_to workout.name, workout, {:class => "text-light font-weight-bold text-left"} %>
+                            <% if user_signed_in? %>
+                                <li class="list-inline-item float-right">
+                                    <button class="btn btn-outline-warning mt-3">Add to account</button>
+                                </li>
+                            <% end %>
+                        </li>
+                    </div>
+                    <hr>
                 <% end %>
             </ul>
 
             <%= render 'shared/paginate', :@profile => @workouts%>
             <div class="text-center mt-2">
                 <%= link_to 'Home', root_path, class: "btn btn-lg btn-outline-warning"  %>
-                <%= link_to "Add workout", new_workout_path, class: "btn btn-lg btn-outline-warning" %>
+                <%= link_to "New Workout", new_workout_path, class: "btn btn-lg btn-outline-warning" %>
             </div>
         </div>
     </div>
