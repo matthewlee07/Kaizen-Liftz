@@ -8,12 +8,12 @@
                     <div class="container">
                         <li class="pt-4 list-inline-item">
                             <%= link_to workout.name, workout, {:class => "text-light font-weight-bold text-left"} %>
-                            <% if user_signed_in? %>
-                                <li class="list-inline-item float-right">
-                                    <button class="btn btn-outline-warning mt-3">Add to account</button>
-                                </li>
-                            <% end %>
                         </li>
+                        <% if user_signed_in? %>
+                            <li class="list-inline-item float-right">
+                                <button class="btn btn-outline-warning mt-3">Add</button>
+                            </li>
+                        <% end %>
                     </div>
                     <hr>
                 <% end %>

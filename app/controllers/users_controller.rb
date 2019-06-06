@@ -41,11 +41,18 @@ class UsersController < ApplicationController
         redirect_to root_path
     end
 
+    # WORKOUT RELATED
+    # READ
     def get_workouts
         @user = User.find(params[:id])
     end
 
     def show_workout
+        @workout = Workout.find(params[:workout_id])
+    end
+
+    # UPDATE
+    def edit_workout
         @workout = Workout.find(params[:workout_id])
     end
 
