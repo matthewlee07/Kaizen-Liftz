@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
 
     def show_workout
-        @log = Log.find(params[:id])
+        @workout = Workout.find(params[:workout_id])
     end
 
     private

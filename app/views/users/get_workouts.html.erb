@@ -6,7 +6,7 @@
             <ul class="list-unstyled bg-secondary rounded">
                 <% @user.get_workouts.each do |workout| %>
                     <li class="p-2" >
-                        <%= link_to workout.name, show_workout_path(current_user.id, workout.regiments.ids.first), {:class => "text-light pl-5 font-weight-bold text-left"} %>
+                        <%= link_to workout.name, show_workout_path(current_user.id, workout.id), {:class => "text-light pl-5 font-weight-bold text-left"} %>
                     </li>
                     <hr>
                 <% end %>
