@@ -140,8 +140,6 @@ Log.create!([
     { user_id: 2, regiment_id: 14 },
     { user_id: 2, regiment_id: 15 },
     { user_id: 2, regiment_id: 16 },
-
-    
 ])
 
 LogEntry.create!([

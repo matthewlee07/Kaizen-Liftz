@@ -1,0 +1,44 @@
+<div class="container-fluid main pb-5 mb-5">
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+            <h1><%= @workout.name %></h1>
+            <ul class="list-unstyled my-4 list-inline">
+                <div class="container ml-5">
+                    <div class="row">
+                        <li class="text-light list-inline-item col">Exercise</li>
+                        <li class="text-warning list-inline-item col"> Sets</li>
+                        <li class="text-warning list-inline-item col"> Reps</li>
+                    </div>
+                </div>
+            </ul>
+            <span class="d-block">
+                <% @workout.regiments.each do |regiment| %>
+                    <ul class="list-unstyled my-4 list-inline">
+                        <div class="container ml-5">
+                            <div class="row">
+                                <li class="text-warning list-inline-item col"><%= regiment.exercise.name %></li>
+                                <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
+                                <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
+                            </div>
+                        </div>
+                    </ul>
+                    <hr >
+                <% end %>
+            </span>
+
+            <div>
+                <% if user_signed_in?%>
+                    <button class="btn btn-outline-warning d-block mb-4">Add to account</button>
+                <% end %>
+                <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning"  %>
+                <% if current_user.try(:admin?)%>
+                    <a href="/workouts/<%=@workout.id %>/edit" class="btn btn-outline-warning">
+                        Edit
+                    </a>
+                    <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     authenticate :user do 
         get 'users/:id/workouts', to: 'users#get_workouts', as: 'get_workouts'
+        get 'users/:id/workouts/:regiment_id', to: 'users#show_workout', as: 'show_workout'
     end
 
     resources :muscles, :exercises, :workouts

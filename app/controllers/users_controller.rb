@@ -45,6 +45,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def show_workout
+        @log = Log.find(params[:id])
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :email, :password)
