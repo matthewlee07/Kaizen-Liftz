@@ -42,11 +42,11 @@ class WorkoutsController < ApplicationController
     end
 
     # DESTROY
-    # def destroy
-    #     Workout.find(params[:id]).destroy
-
-    #     redirect_to workouts_url
-    # end
+    def destroy
+        Workout.find(params[:id]).destroy
+        # if workout has dependent then error page
+        redirect_to workouts_url
+    end
     
     # private
     def workout_params

@@ -35,12 +35,6 @@ class UsersController < ApplicationController
         end
     end
 
-    # DESTROY
-    def destroy
-        User.find(params[:id]).destroy        
-        redirect_to root_path
-    end
-
     # WORKOUT RELATED
     # READ
     def get_workouts
@@ -54,6 +48,12 @@ class UsersController < ApplicationController
     # UPDATE
     def edit_workout
         @workout = Workout.find(params[:workout_id])
+    end
+
+    # DESTROY
+    def destroy_workout
+        Log.find(params[:workout_id]).destroy
+        redirect_to root_path
     end
 
     private

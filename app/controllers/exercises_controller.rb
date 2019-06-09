@@ -41,11 +41,11 @@ class ExercisesController < ApplicationController
     end
 
     # DESTROY
-    # def destroy
-    #     Exercise.find(params[:id]).destroy
-    # 
-    #     redirect_to exercises_url
-    # end
+    def destroy
+        Exercise.find(params[:id]).destroy
+        # if exercise has dependent then error page
+        redirect_to exercises_url
+    end
     
     private
     def exercise_params

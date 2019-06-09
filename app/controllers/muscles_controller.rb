@@ -32,18 +32,18 @@ class MusclesController < ApplicationController
     def update
         @muscle = Muscle.find(params[:id])
         if @muscle.update_attributes(muscle_params)
-
-        redirect_to @muscle
+            redirect_to @muscle
         else
-        render 'edit'
+            render 'edit'
         end
     end
 
     # DESTROY
-    # def destroy
-    #     Muscle.find(params[:id]).destroy
-    #     redirect_to muscles_url
-    # end
+    def destroy
+        Muscle.find(params[:id]).destroy
+        # if muscle has dependent then error page
+        redirect_to muscles_url
+    end
     
     private
     def muscle_params
