@@ -4,16 +4,15 @@
             <h1 class="text-center">My Workouts</h1>
 
             <ul class="list-unstyled bg-secondary rounded list-inline">
-                <% @user.get_workouts.each do |workout| %>
+                <% @workouts.each do |workout| %>
                     <div class="container">
                         <li class="pt-4 list-inline-item">
-                            <%= link_to workout.name, show_workout_path(current_user.id, workout.id), {:class => "text-light pl-5 font-weight-bold text-left"} %>
+                            <%= link_to log.regiment.workout.name, user_log_path(current_user, log), {:class => "text-light pl-5 font-weight-bold text-left"} %>
                         </li>                        
                         
                         <li class="pt-3 list-inline-item float-right">
-                            <%= link_to "Remove", destroy_workout_path(current_user.id, workout.id), data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
+                            <%= link_to "Remove", user_log_path(current_user, log), method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
                         </li>
-                        
                     </div>
                     <hr>
                 <% end %>
@@ -22,7 +21,7 @@
 
             <div class="text-center mt-2">
                 <%= link_to 'Home', root_path, class: "btn btn-lg btn-outline-warning"  %>
-                <%= link_to "Add Workout", workouts_path, class: "btn btn-lg btn-outline-warning" %>
+                <%= link_to "Add log", user_logs_path, class: "btn btn-lg btn-outline-warning" %>
             </div>
         </div>
     </div>

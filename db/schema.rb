@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_203132) do
+ActiveRecord::Schema.define(version: 2019_06_10_035913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_203132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_intentions_on_exercise_id"
+    t.index ["muscle_id", "exercise_id"], name: "index_intentions_on_muscle_id_and_exercise_id", unique: true
     t.index ["muscle_id"], name: "index_intentions_on_muscle_id"
   end
 
@@ -45,12 +46,24 @@ ActiveRecord::Schema.define(version: 2019_06_01_203132) do
     t.index ["log_id"], name: "index_log_entries_on_log_id"
   end
 
+  create_table "log_exercises", force: :cascade do |t|
+    t.bigint "log_id"
+    t.bigint "exercise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_log_exercises_on_exercise_id"
+    t.index ["log_id"], name: "index_log_exercises_on_log_id"
+  end
+
   create_table "logs", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "regiment_id"
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight"
+    t.integer "sets"
+    t.integer "reps"
     t.index ["regiment_id"], name: "index_logs_on_regiment_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
@@ -64,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_06_01_203132) do
   create_table "regiments", force: :cascade do |t|
     t.bigint "exercise_id"
     t.bigint "workout_id"
-    t.integer "weight"
     t.integer "sets"
     t.integer "reps"
     t.datetime "created_at", null: false
@@ -95,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_203132) do
   add_foreign_key "intentions", "exercises"
   add_foreign_key "intentions", "muscles"
   add_foreign_key "log_entries", "logs"
+  add_foreign_key "log_exercises", "exercises"
+  add_foreign_key "log_exercises", "logs"
   add_foreign_key "logs", "regiments"
   add_foreign_key "logs", "users"
   add_foreign_key "regiments", "exercises"

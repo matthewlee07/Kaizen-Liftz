@@ -8,6 +8,7 @@ class Exercise < ApplicationRecord
     has_many :muscles, :through => :intentions
     has_many :regiments 
     has_many :workouts, :through => :regiments
+    has_many :logs
 
     accepts_nested_attributes_for :intentions, allow_destroy: true
 

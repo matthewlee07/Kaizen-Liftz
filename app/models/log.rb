@@ -6,6 +6,8 @@ class Log < ApplicationRecord
 
     belongs_to :user
     belongs_to :regiment
+    has_many :log_exercises
     has_many :log_entries, dependent: :destroy
+    has_many :exercises, through: :log_exercises
     
 end

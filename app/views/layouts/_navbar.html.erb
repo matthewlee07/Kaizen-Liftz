@@ -8,7 +8,7 @@
                     My Account
                 </button>
                 <div class="dropdown-menu bg-light dropdown-menu-right text-right" >
-                    <%= link_to "My Workouts", get_workouts_path(current_user.id), class:"text-dark text-capitalize d-block pr-4" %>
+                    <%= link_to "My Workouts", user_workouts_path(current_user), class:"text-dark text-capitalize d-block pr-4" %>
                     <%= link_to "My Settings", edit_user_registration_path, class:"text-dark text-capitalize d-block pr-4" %>
                 </div>
             </div>

@@ -1,7 +1,22 @@
 class WorkoutsController < ApplicationController
     before_action :authenticate_user!, only: [:create, :new]
 
+    # READ
+    def index
+        @workouts = Workout.order(name: :asc).paginate(page: params[:page], :per_page => 10)
+    end
+
+    def show
+        @workout = Workout.find(params[:id])
+    end
+    
     # CREATE
+    def new
+        @exercise_options = Exercise.all.map{|exercise|[exercise.name, exercise.id]}
+        @workout = Workout.new if @workout == nil
+        @workout.regiments.build
+    end
+
     def create
         @workout = Workout.new(workout_params)
         if @workout.save
@@ -9,21 +24,6 @@ class WorkoutsController < ApplicationController
         else
             render :new
         end
-    end
-
-    def new
-        @exercise_options = Exercise.all.map{|exercise|[exercise.name, exercise.id]}
-        @workout = Workout.new if @workout == nil
-        @workout.regiments.build
-    end
-
-    # READ
-    def show
-        @workout = Workout.find(params[:id])
-    end
-
-    def index
-        @workouts = Workout.order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     # UPDATE
