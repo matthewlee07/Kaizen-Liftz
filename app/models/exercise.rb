@@ -4,7 +4,7 @@ class Exercise < ApplicationRecord
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false }
     validates :comments, length: { maximum: 1000 }
 
-    has_many :intentions, inverse_of: :exercise
+    has_many :intentions, inverse_of: :exercise, dependent: :destroy
     has_many :muscles, :through => :intentions
     has_many :regiments 
     has_many :workouts, :through => :regiments

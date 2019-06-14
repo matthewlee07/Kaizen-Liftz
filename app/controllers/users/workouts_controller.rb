@@ -1,5 +1,5 @@
 module Users
-    
+
     class WorkoutsController < ApplicationController
 
         # READ
@@ -27,8 +27,6 @@ module Users
             @user = User.new if @user == nil
         end
 
-        
-
         # UPDATE
         def edit
             @user = User.find(params[:id])
@@ -44,7 +42,6 @@ module Users
         end
 
         # WORKOUT RELATED
-        
 
         # UPDATE
         def edit_workout

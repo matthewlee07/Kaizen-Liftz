@@ -1,14 +1,12 @@
 module Users
 
     class LogsController < ApplicationController
-        
+
         def edit
             @log = Log.find(params[:id])
             @workout = @log.regiment.workout
             @exercise = @log.exercises.first
         end
-
-         # UPDATE
 
         def update
             @log = Log.find(params[:id])

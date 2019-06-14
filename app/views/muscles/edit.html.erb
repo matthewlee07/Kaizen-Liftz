@@ -4,7 +4,8 @@
       <h1 class="text-light">Edit <%= @muscle.name %></h1>
 
       <%= form_for(@muscle) do |f| %>
-      <div class="form-group">        
+      <div class="form-group">
+        <%= render 'shared/error_messages', :@profile => @muscle %>
         <%= f.label :name %> <%= f.text_field :name, autofocus: true, class: 'form-control mb-4'%> 
         
         <%= link_to 'Back', muscles_path, class: "btn btn-outline-warning"  %>

@@ -7,7 +7,6 @@ class ExercisesController < ApplicationController
         if @exercise.save            
             redirect_to exercises_path
         else
-            
             render :new
         end
     end
