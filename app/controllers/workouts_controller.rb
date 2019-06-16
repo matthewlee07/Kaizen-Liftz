@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
 
     # READ
     def index
-        @workouts = Workout.order(name: :asc).paginate(page: params[:page], :per_page => 10)
+        @workouts = Workout.where(user_id: nil).order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     def show
@@ -21,7 +21,7 @@ class WorkoutsController < ApplicationController
         @workout = Workout.new(workout_params)
         if @workout.save
             redirect_to workouts_path
-        else
+        else˛¸
             render :new
         end
     end

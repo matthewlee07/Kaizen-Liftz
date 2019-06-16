@@ -5,6 +5,7 @@ module Users
         # READ
         def index
             @user = User.find(params[:user_id])
+            
             @workouts = @user.workouts
         end
 
@@ -13,14 +14,12 @@ module Users
         end
         # CREATE
         def create
-            @user = User.new(user_params)
-            # session[:return_to] ||= request.referer
-            if @user.save
-                log_in @user
-                redirect_to(root_path)
-            else
-                render :new
+            @workout = Workout.find(params[:id])
+            new_workout = current_user.workouts.create(name: @workout.name)
+            @workout.regiments.each do |regiment|
+                new_workout.regiments.create(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
             end
+            redirect_to user_workouts_path
         end
 
         def new
@@ -29,7 +28,7 @@ module Users
 
         # UPDATE
         def edit
-            @user = User.find(params[:id])
+            @workout = Workout.find(params[:id])
         end
 
         def update
@@ -41,17 +40,11 @@ module Users
             end
         end
 
-        # WORKOUT RELATED
-
-        # UPDATE
-        def edit_workout
-            @workout = Workout.find(params[:workout_id])
-        end
-
         # DESTROY
         def destroy
-            regiments = Regiment.where(workout_id: params[:id])
-            Log.where(regiment_id: regiments, user_id: current_user).destroy_all
+            @workout = Workout.find(params[:id])
+            @workout.destroy
+            # Log.where(regiment_id: regiments, user_id: current_user).destroy_all
             redirect_to user_workouts_path
         end
 

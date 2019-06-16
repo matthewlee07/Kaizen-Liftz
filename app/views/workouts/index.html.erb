@@ -10,12 +10,11 @@
                             <%= link_to workout.name, workout, {:class => "text-light font-weight-bold text-left"} %>
                         </li>
                         <% if user_signed_in? %>
-                            <h6 class="text-danger bg-dark"> TODO: validation: if !current_user.workouts.ids.includes(workout.id): Add. <br/>How to use workouts method in user model to filter? User Module?</h6>
-                            <%# <% if !current_user.workouts.ids.include?(workout.id)%>
-
+                            <% if !current_user.workouts.map(&:name).include?(workout.name) %>
                                 <li class="list-inline-item float-right">
-                                    <button class="btn btn-outline-warning mt-3">Add</button>
+                                    <%= link_to "Add", user_workout_path(current_user, workout), {:class =>"btn btn-outline-warning mt-3"} %>
                                 </li>
+                            <% end %>
                         <% end %>
                     </div>
                     <hr>

@@ -90,9 +90,13 @@ Intention.create!([
 ])
 
 Workout.create!([
-    { name: "Big 3"  }, 
+    { name: "Big 3"}, 
     { name: "Upper Body" },
-    { name: "Lower Body" }
+    { name: "Lower Body"}, 
+    { name: "Big 3", user_id: 1  }, 
+    { name: "Upper Body", user_id: 1 },
+    { name: "Lower Body", user_id: 1 }, 
+    { name: "Lower Body", user_id: 2 }
 ])
 
 Regiment.create!([
@@ -111,38 +115,54 @@ Regiment.create!([
     { exercise_id: 6,  workout_id: 3, sets: 5, reps: 5 },
     { exercise_id: 7,  workout_id: 3, sets: 5, reps: 5 },
     { exercise_id: 8,  workout_id: 3, sets: 5, reps: 5 },
-    { exercise_id: 9,  workout_id: 3, sets: 5, reps: 5 }
+    { exercise_id: 1,  workout_id: 4, sets: 5, reps: 5 },
+    { exercise_id: 5,  workout_id: 4, sets: 5, reps: 5 },
+    { exercise_id: 14, workout_id: 4, sets: 5, reps: 5 },
+    { exercise_id: 2,  workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 3,  workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 4,  workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 10, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 11, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 12, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 13, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 15, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 16, workout_id: 5, sets: 5, reps: 5 },
+    { exercise_id: 6,  workout_id: 6, sets: 5, reps: 5 },
+    { exercise_id: 7,  workout_id: 6, sets: 5, reps: 5 },
+    { exercise_id: 8,  workout_id: 6, sets: 5, reps: 5 },
+    { exercise_id: 9,  workout_id: 6, sets: 5, reps: 5 }, 
+    { exercise_id: 6,  workout_id: 7, sets: 5, reps: 5 },
+    { exercise_id: 7,  workout_id: 7, sets: 5, reps: 5 },
+    { exercise_id: 8,  workout_id: 7, sets: 5, reps: 5 },
+    { exercise_id: 9,  workout_id: 7, sets: 5, reps: 5 }
 ])
 
-
-
-
 Log.create!([
-    { user_id: 1, regiment_id: 1 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 2 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 3 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 4 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 5 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 6 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 7 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 8 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 9 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 10, weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 11, weight: 10, sets: 5, reps: 5 },
-    { user_id: 1, regiment_id: 12, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 4 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 5 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 6 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 7 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 8 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 9 , weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 10, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 11, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 12, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 13, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 14, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 15, weight: 10, sets: 5, reps: 5 },
-    { user_id: 2, regiment_id: 16, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 1, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
+    { user_id: 2, weight: 10, sets: 5, reps: 5 },
 ])
 
 LogExercise.create!([

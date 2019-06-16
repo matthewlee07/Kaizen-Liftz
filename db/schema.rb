@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_035913) do
+ActiveRecord::Schema.define(version: 2019_06_16_031349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,14 +57,12 @@ ActiveRecord::Schema.define(version: 2019_06_10_035913) do
 
   create_table "logs", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "regiment_id"
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "weight"
     t.integer "sets"
     t.integer "reps"
-    t.index ["regiment_id"], name: "index_logs_on_regiment_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
@@ -102,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_035913) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
   add_foreign_key "intentions", "exercises"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_035913) do
   add_foreign_key "log_entries", "logs"
   add_foreign_key "log_exercises", "exercises"
   add_foreign_key "log_exercises", "logs"
-  add_foreign_key "logs", "regiments"
   add_foreign_key "logs", "users"
   add_foreign_key "regiments", "exercises"
   add_foreign_key "regiments", "workouts"
+  add_foreign_key "workouts", "users"
 end

@@ -21,7 +21,7 @@
                                 <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
                                 <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
                                 <li class="text-light list-inline-item col">
-                                    <%= link_to 'Edit', edit_user_log_path(current_user, regiment.log),class: "btn btn-outline-warning"%>
+                                    <%= link_to 'Edit', edit_user_regiment_path(current_user, regiment),class: "btn btn-outline-warning"%>
                                 </li>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 
             <div>
                 <%= link_to 'Back', user_workouts_path, class: "btn btn-outline-warning"  %>                    
-                <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
+                <%= link_to "Remove", user_workout_path(current_user, @workout), method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
             </div>
 
         </div>
