@@ -12,7 +12,10 @@
                         <% if user_signed_in? %>
                             <% if !current_user.workouts.map(&:name).include?(workout.name) %>
                                 <li class="list-inline-item float-right">
-                                    <%= link_to "Add", user_workout_path(current_user, workout), {:class =>"btn btn-outline-warning mt-3"} %>
+                                    <%= form_for([current_user, workout], url: user_workouts_path(current_user), method: :post)  do |f| %>
+                                        <%= f.hidden_field :id, value: workout.id %>
+                                        <%= f.submit "Add", class:"btn btn-outline-warning mt-3" %>
+                                    <% end %>
                                 </li>
                             <% end %>
                         <% end %>

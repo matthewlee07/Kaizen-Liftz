@@ -14,12 +14,12 @@ module Users
         end
         # CREATE
         def create
-            @workout = Workout.find(params[:id])
-            new_workout = current_user.workouts.create(name: @workout.name)
+            @workout = Workout.find(params[:workout][:id])
+            new_workout = current_user.workouts.create!(name: @workout.name)
             @workout.regiments.each do |regiment|
-                new_workout.regiments.create(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
+                new_workout.regiments.create!(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
             end
-            redirect_to user_workouts_path
+            redirect_to user_workouts_path(current_user)
         end
 
         def new
