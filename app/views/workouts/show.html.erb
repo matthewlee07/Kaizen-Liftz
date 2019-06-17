@@ -1,7 +1,7 @@
 <div class="container-fluid main pb-5 mb-5">
     <div class="row justify-content-center ">
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-            <h1><%= @workout.name %></h1>
+            <h1 class="text-center"><%= @workout.name %></h1>
             <ul class="list-unstyled my-4 list-inline">
                 <div class="container ml-5">
                     <div class="row">
@@ -26,15 +26,13 @@
                 <% end %>
             </span>
 
-            <div>
-                <% if user_signed_in?%>
-                    <button class="btn btn-outline-warning d-block mb-4">Add to Account</button>
-                <% end %>
+            <div class="container text-center">
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning"  %>
                 <% if current_user.try(:admin?)%>
                     <a href="/workouts/<%=@workout.id %>/edit" class="btn btn-outline-warning">
                         Edit
                     </a>
+                    <%= link_to "delete", @Workout, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
                 <% end %>
             </div>
 

@@ -13,7 +13,7 @@
                             <%= render 'intention_fields', f: intention, muscles: :muscles %>
                         <% end %>
                     </div>
-                    <%= link_to_add_association 'New Muscle', f, :intentions, {:class=> "btn btn-outline-warning my-4"}%>
+                    <%= link_to_add_association 'Add Muscle', f, :intentions, {:class=> "btn btn-outline-warning my-4"}%>
                 </div>
                 <h6 class="text-danger"> TODO: validation: must have muscle, must be unique muscle. must have primary.  must add new muscles to bottom</h6>
                 <%= f.label :comments %>

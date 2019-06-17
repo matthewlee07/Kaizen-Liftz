@@ -1,45 +1,43 @@
 <div class="container-fluid main pb-5 mb-5">
-  <div class="row justify-content-center ">
-    <div class="col-sm-10 devise-form rounded bg-dark text-warning">
-      <h1><%= @exercise.name %></h1>
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning pl-5">
+            <h1 class="text-center"><%= @exercise.name %></h1>
+            
+            <div class="d-block mb-2">
+                <ul class="text-light list-unstyled list-inline">
+                    <div class="my-2">
+                        <div class="text-warning"> Primary muscles:</div>
+                        <% @exercise.muscle_intentions(:primary).each do |intention| %>
+                            <li class="list-inline-item" style="margin-right: -2px">
+                            <%= intention.muscle.name %>.
+                            </li>
+                        <% end %>
+                    </div>
+                    <div class="my-2">
+                        <div class="text-warning"> Secondary muscles:</div>
+                            <% @exercise.muscle_intentions(:secondary).each do |intention| %>
+                            <li class="list-inline-item" style="margin-right: -2px">
+                            <%= intention.muscle.name %>.
+                            </li>
+                        <% end %>
+                    </div>
+                </ul>
+                <h6 class="text-danger">TODO: Video to come</h6>
+                Comments:
+                <div class="text-light">
+                    <%= @exercise.comments %>
+                </div>
+            </div>
 
-      <div class="d-block mb-2">
-        <ul class="text-light list-unstyled list-inline">
-          <div class="my-2">
-            <div class="text-warning"> Primary muscles:</div>
-            <% @exercise.muscle_intentions(:primary).each do |intention| %>
-            <li class="list-inline-item" style="margin-right: -2px">
-              <%= intention.muscle.name %>.
-            </li>
-            <% end %>
-          </div>
-          <div class="my-2">
-            <div class="text-warning"> Secondary muscles:</div>
-            <% @exercise.muscle_intentions(:secondary).each do |intention| %>
-            <li class="list-inline-item" style="margin-right: -2px">
-              <%= intention.muscle.name %>.
-            </li>
-            <% end %>
-          </div>
-        </ul>
-        Comments:
-        <div class="text-light">
-          <%= @exercise.comments %>
+            <div>
+                <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning" %>
+                <% if current_user.try(:admin?)%>
+                    <a href="/exercises/<%=@exercise.id %>/edit" class="btn btn-outline-warning">
+                        Edit
+                    </a>
+                    <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %> 
+                <% end %>
+            </div>
         </div>
-      </div>
-
-      <div>
-        <%= link_to 'Back', exercises_path, class: "btn btn-outline-warning" %>
-        <% if current_user.try(:admin?)%>
-        <a
-          href="/exercises/<%=@exercise.id %>/edit"
-          class="btn btn-outline-warning"
-        >
-          Edit
-        </a>
-        <%= link_to "delete", @Customer, method: :delete, data: { confirm: "You
-        sure?" }, class: ["btn","btn-danger"] %> <% end %>
-      </div>
     </div>
-  </div>
 </div>

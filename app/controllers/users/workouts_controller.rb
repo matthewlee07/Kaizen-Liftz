@@ -6,7 +6,7 @@ module Users
         def index
             @user = User.find(params[:user_id])
             
-            @workouts = @user.workouts
+            @workouts = @user.workouts.order(name: :asc).paginate(page: params[:page], :per_page => 10)
         end
 
         def show
