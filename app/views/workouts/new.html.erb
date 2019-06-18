@@ -15,10 +15,11 @@
                             <%= render 'regiment_fields', f: regiment, exercises: :exercises %>
                         <% end %>
                     </div>
-                    <%= link_to_add_association 'New Exercise', f, :regiments, {:class=> "btn btn-outline-warning my-4"}%>
+                    <%= link_to_add_association 'Add Exercise', f, :regiments, {:class=> "btn btn-outline-warning my-4"}%>
                 </div>
+
                 <h6 class="text-danger"> TODO: validation: Won't work with Exercise</h6>
-                <h6 class="text-danger"> TODO: validation: must have exercise exercise to bottom</h6>
+                <h6 class="text-danger"> TODO: validation: must have additional exercise to bottom</h6>
 
 
                 <%= link_to 'Back', workouts_path, class: "btn btn-outline-warning" %>

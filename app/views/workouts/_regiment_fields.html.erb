@@ -6,6 +6,8 @@
         <%= f.select :sets, (1..100) %>
         <%= f.label :reps%>
         <%= f.select :reps, (1..100) %>
+        <%= f.label :weight%>
+        <%= f.select :weight, (5..1000).step(5) %>
         <%= link_to_remove_association 'Remove exercise', f, class: 'btn btn-danger float-right' %>
     </div>
 </div>

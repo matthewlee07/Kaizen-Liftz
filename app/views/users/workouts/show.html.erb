@@ -3,27 +3,26 @@
         <div class="col-sm-10 devise-form rounded bg-dark text-warning">
             <h1><%= @workout.name %></h1>
             <ul class="list-unstyled my-4 list-inline">
-                <div class="container ml-5">
-                    <div class="row">
-                        <li class="text-light list-inline-item col">Exercise</li>
-                        <li class="text-warning list-inline-item col"> Sets</li>
-                        <li class="text-warning list-inline-item col"> Reps</li>
-                        <li class="text-warning list-inline-item col"></li>
-                    </div>
+                <div class="row">
+                    <li class="text-light list-inline-item col">Exercise</li>
+                    <li class="text-warning list-inline-item col"> Sets</li>
+                    <li class="text-warning list-inline-item col"> Reps</li>
+                    <li class="text-warning list-inline-item col"> Weight</li>
+                    <li class="text-warning list-inline-item col"></li>
                 </div>
             </ul>
             <span class="d-block">
                 <% @workout.regiments.each do |regiment| %>
                     <ul class="list-unstyled my-4 list-inline">
-                        <div class="container ml-5">
-                            <div class="row">
-                                <li class="text-warning list-inline-item col"><%= regiment.exercise.name %></li>
-                                <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
-                                <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
-                                <li class="text-light list-inline-item col">
-                                    <%= link_to 'Edit', edit_user_regiment_path(current_user, regiment),class: "btn btn-outline-warning"%>
-                                </li>
-                            </div>
+                        <div class="row">
+                            <li class="text-warning list-inline-item col"><%= regiment.exercise.name %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.weight %></li>
+                            
+                            <li class="text-light list-inline-item col">
+                                <%= link_to 'Edit', edit_user_regiment_path(current_user, regiment),class: "btn btn-outline-warning"%>
+                            </li>
                         </div>
                     </ul>
                     <hr >
