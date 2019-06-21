@@ -44,10 +44,6 @@ class RegimentTest < ActiveSupport::TestCase
         @regiment.reps = 101
         assert_not @regiment.valid?
     end
-    test "weight should not be too small" do 
-        @regiment.weight = -1
-        assert_not @regiment.valid?
-    end
     test "sets should not be too small" do 
         @regiment.sets = 0
         assert_not @regiment.valid?

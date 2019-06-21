@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout: one
+  start_time: 2019-06-21 13:26:42
+  stop_time: 2019-06-21 13:26:42
+  comments: MyText
+
+two:
+  workout: two
+  start_time: 2019-06-21 13:26:42
+  stop_time: 2019-06-21 13:26:42
+  comments: MyText

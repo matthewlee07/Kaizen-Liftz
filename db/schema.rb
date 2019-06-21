@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_231057) do
+ActiveRecord::Schema.define(version: 2019_06_21_232844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercise_entries", force: :cascade do |t|
+    t.bigint "workout_entry_id"
+    t.bigint "exercise_id"
+    t.integer "weight"
+    t.integer "sets"
+    t.integer "reps"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_exercise_entries_on_exercise_id"
+    t.index ["workout_entry_id"], name: "index_exercise_entries_on_workout_entry_id"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -64,6 +77,16 @@ ActiveRecord::Schema.define(version: 2019_06_17_231057) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workout_entries", force: :cascade do |t|
+    t.bigint "workout_id"
+    t.datetime "start_time"
+    t.datetime "stop_time"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workout_id"], name: "index_workout_entries_on_workout_id"
+  end
+
   create_table "workouts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -72,9 +95,12 @@ ActiveRecord::Schema.define(version: 2019_06_17_231057) do
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
+  add_foreign_key "exercise_entries", "exercises"
+  add_foreign_key "exercise_entries", "workout_entries"
   add_foreign_key "intentions", "exercises"
   add_foreign_key "intentions", "muscles"
   add_foreign_key "regiments", "exercises"
   add_foreign_key "regiments", "workouts"
+  add_foreign_key "workout_entries", "workouts"
   add_foreign_key "workouts", "users"
 end

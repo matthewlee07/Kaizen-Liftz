@@ -5,6 +5,7 @@ class Workout < ApplicationRecord
 
     has_many :regiments, inverse_of: :workout, dependent: :destroy 
     has_many :exercises, :through => :regiments
+    has_many :workout_entries
 
     belongs_to :user, optional: true
 
