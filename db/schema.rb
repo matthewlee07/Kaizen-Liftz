@@ -33,39 +33,6 @@ ActiveRecord::Schema.define(version: 2019_06_17_231057) do
     t.index ["muscle_id"], name: "index_intentions_on_muscle_id"
   end
 
-  create_table "log_entries", force: :cascade do |t|
-    t.bigint "log_id"
-    t.datetime "start_time"
-    t.datetime "stop_time"
-    t.integer "weight"
-    t.integer "sets"
-    t.integer "reps"
-    t.text "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["log_id"], name: "index_log_entries_on_log_id"
-  end
-
-  create_table "log_exercises", force: :cascade do |t|
-    t.bigint "log_id"
-    t.bigint "exercise_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exercise_id"], name: "index_log_exercises_on_exercise_id"
-    t.index ["log_id"], name: "index_log_exercises_on_log_id"
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.bigint "user_id"
-    t.text "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "weight"
-    t.integer "sets"
-    t.integer "reps"
-    t.index ["user_id"], name: "index_logs_on_user_id"
-  end
-
   create_table "muscles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -107,10 +74,6 @@ ActiveRecord::Schema.define(version: 2019_06_17_231057) do
 
   add_foreign_key "intentions", "exercises"
   add_foreign_key "intentions", "muscles"
-  add_foreign_key "log_entries", "logs"
-  add_foreign_key "log_exercises", "exercises"
-  add_foreign_key "log_exercises", "logs"
-  add_foreign_key "logs", "users"
   add_foreign_key "regiments", "exercises"
   add_foreign_key "regiments", "workouts"
   add_foreign_key "workouts", "users"

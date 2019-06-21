@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     authenticate :user do
         resources :users do 
             resources :workouts, controller: "users/workouts"
-            resources :logs, controller: "users/logs"
             resources :regiments, controller: "users/regiments"
         end
     end

@@ -50,12 +50,6 @@ class UsersController < ApplicationController
         @workout = Workout.find(params[:workout_id])
     end
 
-    # DESTROY
-    def destroy_workout
-        Log.find(params[:workout_id]).destroy
-        redirect_to root_path
-    end
-
     private
     def user_params
         params.require(:user).permit(:username, :email, :password)

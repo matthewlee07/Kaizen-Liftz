@@ -44,7 +44,6 @@ module Users
         def destroy
             @workout = Workout.find(params[:id])
             @workout.destroy
-            # Log.where(regiment_id: regiments, user_id: current_user).destroy_all
             redirect_to user_workouts_path
         end
 
