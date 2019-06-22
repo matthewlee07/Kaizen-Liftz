@@ -1,9 +1,10 @@
 class Workout < ApplicationRecord
     before_save :titleize_name
+    validate :unique_exercises
     
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false, scope: :user }
 
-    has_many :regiments, inverse_of: :workout, dependent: :destroy 
+    has_many :regiments, dependent: :destroy
     has_many :exercises, :through => :regiments
     has_many :workout_entries
 
@@ -14,5 +15,11 @@ class Workout < ApplicationRecord
     private 
     def titleize_name
         self.name = name.titleize
+    end
+
+    def unique_exercises
+        if regiments.map(&:exercise_id).uniq != regiments.map(&:exercise_id)
+            errors.add(:exercises, "not unique")
+        end
     end
 end

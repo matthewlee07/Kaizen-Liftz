@@ -19,9 +19,9 @@ class RegimentTest < ActiveSupport::TestCase
         @regiment.workout_id = " "
         assert_not @regiment.valid?
     end
-    test "weight should be present" do
-        @regiment.weight = " "
-        assert_not @regiment.valid?
+    test "weight does not need to be present" do
+        @regiment.weight = nil
+        assert @regiment.valid?
     end
     test "sets should be present" do
         @regiment.sets = " "

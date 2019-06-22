@@ -132,12 +132,12 @@ Regiment.create!([
     { exercise_id: 9,  workout_id: 6, sets: 5,  reps: 5 , weight: 25 }
 ])
 
-Workout_Entry.create!(
+WorkoutEntry.create!(
     { workout_id: 4, start_time: "2019-06-21 15:00:00", stop_time: "2019-06-21 16:00:00", comments: "Was too tired to try for last set." }
 )
 
-Exercise_Entry.create!(
+ExerciseEntry.create!([
     { workout_entry_id: 1, exercise_id: 1, sets: 5, reps: 5, weight: 65, comments: "Felt light, try 105 pounds next" }, 
     { workout_entry_id: 1, exercise_id: 5, sets: 4, reps: 5, weight: 135, comments: "Felt light, try 205 pounds next" }, 
-    { workout_entry_id: 1, exercise_id: 14, sets: 4, reps: 5, weight: 135, comments: "Felt comfortable, but worried about form. Try 155 pounds next" }
+    { workout_entry_id: 1, exercise_id: 14, sets: 4, reps: 5, weight: 135, comments: "Felt comfortable, but worried about form. Try 155 pounds next" }]
 )
