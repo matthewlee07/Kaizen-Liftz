@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
     authenticate :user do
         resources :users do 
-            resources :workouts, controller: "users/workouts"
+            resources :workouts, controller: "users/workouts" do 
+                resources :workout_entries, controller: "users/workouts/workout_entries"
+            end
             resources :regiments, controller: "users/regiments"
         end
     end

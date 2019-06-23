@@ -1,5 +1,4 @@
 module Users
-
     class RegimentsController < ApplicationController
 
         def edit

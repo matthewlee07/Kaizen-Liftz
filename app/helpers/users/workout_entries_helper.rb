@@ -1,0 +1,2 @@
+module Users::WorkoutEntriesHelper
+end
