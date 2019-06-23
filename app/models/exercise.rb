@@ -1,9 +1,9 @@
 class Exercise < ApplicationRecord
     before_save :titleize_name
 
-    # validate :has_muscle
-    # validate :has_primary_muscle 
-    # validate :has_unique_muscles
+    validate :has_muscle
+    validate :has_primary_muscle 
+    validate :has_unique_muscles
 
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false }
     validates :comments, length: { maximum: 1000 }

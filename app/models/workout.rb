@@ -1,6 +1,6 @@
 class Workout < ApplicationRecord
     before_save :titleize_name
-    # validate :unique_exercises
+    validate :unique_exercises
     
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false, scope: :user }
 
