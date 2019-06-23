@@ -1,0 +1,42 @@
+<div class="card bg-dark text-warning">
+    <div class="card-header" id="headingOne">
+        <h1 class="mb-0 text-center bg-secondary">
+            <button class="btn btn-lg btn-link text-warning" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <%= @workout.name %>
+            </button>
+        </h1>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionWorkoutEntries">
+        <div class="card-body">
+            <ul class="list-unstyled my-4 list-inline">
+                <div class="row">
+                    <li class="text-light list-inline-item col">Exercise</li>
+                    <li class="text-warning list-inline-item col"> Sets</li>
+                    <li class="text-warning list-inline-item col"> Reps</li>
+                    <li class="text-warning list-inline-item col"> Weight</li>
+                    <li class="text-warning list-inline-item col"></li>
+                </div>
+            </ul>
+            <span class="d-block">
+                <h5 class="text-danger">TODO: order alphabetically </h5>
+                <h5 class="text-danger">TODO: change url when Edit is clicked</h5>
+                <% @workout.regiments.each do |regiment| %>
+                    <ul class="list-unstyled my-4 list-inline">
+                        <div class="row">
+                            <li class="text-warning list-inline-item col"><%= regiment.exercise.name %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
+                            <li class="text-light list-inline-item col"> <%= regiment.weight %></li>
+                            
+                            <li class="text-light list-inline-item col">
+                                <%= link_to 'Edit', edit_user_regiment_path(current_user, regiment),class: "btn btn-outline-warning"%>
+                            </li>
+                        </div>
+                    </ul>
+                    <hr >
+                <% end %>
+            </span>
+        </div>
+    </div>
+</div>
