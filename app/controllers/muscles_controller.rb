@@ -8,7 +8,7 @@ class MusclesController < ApplicationController
     
     def show
         @muscle = Muscle.find(params[:id])
-    end  
+    end
 
     # CREATE
     def create
@@ -22,7 +22,7 @@ class MusclesController < ApplicationController
 
     def new
         @muscle = Muscle.new if @muscle == nil
-    end
+    end  
 
     # UPDATE
     def edit
@@ -41,7 +41,6 @@ class MusclesController < ApplicationController
     # DESTROY
     def destroy
         Muscle.find(params[:id]).destroy
-        # if muscle has dependent then error page
         redirect_to muscles_url
     end
     

@@ -1,7 +1,7 @@
 class Workout < ApplicationRecord
     before_save :titleize_name
-
-    # validate :has_exercise_requirements
+    validate :has_exercise_requirements
+    
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false, scope: :user }
 
     has_many :regiments, dependent: :destroy
