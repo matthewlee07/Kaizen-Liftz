@@ -1,6 +1,6 @@
 class Workout < ApplicationRecord
     before_save :titleize_name
-    validate :unique_exercises
+    validate :has_exercise_requirements
     
     validates :name, presence: true, length: { maximum: 100, minimum: 1 }, uniqueness: { case_sensitive: false, scope: :user }
 
@@ -13,13 +13,13 @@ class Workout < ApplicationRecord
     accepts_nested_attributes_for :regiments, allow_destroy: true
 
     private 
-    def titleize_name
-        self.name = name.titleize
-    end
-
-    def unique_exercises
-        if regiments.map(&:exercise_id).uniq != regiments.map(&:exercise_id)
-            errors.add(:exercises, "not unique")
+        def titleize_name
+            self.name = name.titleize
         end
-    end
+
+        def has_exercise_requirements
+            if regiments.map(&:exercise_id).uniq != regiments.map(&:exercise_id)
+                errors.add(:exercises, "not unique")
+            end
+        end
 end

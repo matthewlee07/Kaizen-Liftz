@@ -8,7 +8,7 @@ class Muscle < ApplicationRecord
     has_many :exercises, :through => :intentions
     
     private 
-    def titleize_name
-        self.name = name.titleize
-    end
+        def titleize_name
+            self.name = name.titleize
+        end
 end

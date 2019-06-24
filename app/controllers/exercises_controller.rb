@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :new]
+    before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 
     # CREATE
     def create
@@ -43,7 +43,6 @@ class ExercisesController < ApplicationController
     # DESTROY
     def destroy
         Exercise.find(params[:id]).destroy
-        # if exercise has dependent then error page
         redirect_to exercises_url
     end
     
