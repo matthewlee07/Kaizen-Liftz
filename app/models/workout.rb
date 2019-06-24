@@ -18,6 +18,7 @@ class Workout < ApplicationRecord
         end
 
         def has_exercise_requirements
+            errors.add(:exercise, "is required") unless regiments.map(&:exercise_id).any?
             if regiments.map(&:exercise_id).uniq != regiments.map(&:exercise_id)
                 errors.add(:exercises, "not unique")
             end

@@ -22,7 +22,7 @@ class Exercise < ApplicationRecord
         end
 
         def has_muscle_requirements
-            errors.add(:muscles, "is required") unless intentions.map(&:muscle_id).any?
+            errors.add(:muscle, "is required") unless intentions.map(&:muscle_id).any?
             errors.add(:primary_muscle, "is required") unless intentions.map(&:primary_muscle).any?
             if intentions.map(&:muscle_id).uniq != intentions.map(&:muscle_id)
                 errors.add(:muscles, "not unique")
