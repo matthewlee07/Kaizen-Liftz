@@ -1,5 +1,14 @@
 class MusclesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :new]
+    before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
+
+    # READ
+    def index
+        @muscles = Muscle.order(name: :asc).paginate(page: params[:page], :per_page => 10)
+    end
+    
+    def show
+        @muscle = Muscle.find(params[:id])
+    end  
 
     # CREATE
     def create
@@ -13,15 +22,6 @@ class MusclesController < ApplicationController
 
     def new
         @muscle = Muscle.new if @muscle == nil
-    end
-
-    # READ
-    def show
-        @muscle = Muscle.find(params[:id])
-    end
-
-    def index
-        @muscles = Muscle.order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     # UPDATE

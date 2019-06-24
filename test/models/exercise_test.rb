@@ -6,7 +6,6 @@ class ExerciseTest < ActiveSupport::TestCase
     end
 
     test "should be valid" do
-        # fail because validate private methods
         assert @exercise.valid?
     end
 

@@ -17,13 +17,12 @@ module Users
             @workout.regiments.each do |regiment|
                 new_workout.regiments.create!(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
             end
-            redirect_to user_workouts_path(current_user)
+            redirect_to workouts_path
         end
 
         # DESTROY
         def destroy
-            @workout = Workout.find(params[:id])
-            @workout.destroy
+            Workout.find(params[:id]).destroy
             redirect_to user_workouts_path
         end
 
