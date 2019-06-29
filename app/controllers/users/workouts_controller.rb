@@ -9,14 +9,17 @@ module Users
 
         def show
             @workout = Workout.find(params[:id])
+            @workout_entries = @workout.workout_entries
+            
         end
         # CREATE
         def create
             @workout = Workout.find(params[:workout][:id])
-            new_workout = current_user.workouts.create!(name: @workout.name)
+            new_workout = current_user.workouts.build(name: @workout.name)
             @workout.regiments.each do |regiment|
-                new_workout.regiments.create!(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
+                new_workout.regiments.build(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
             end
+            new_workout.save!
             redirect_to workouts_path
         end
 
@@ -25,6 +28,5 @@ module Users
             Workout.find(params[:id]).destroy
             redirect_to user_workouts_path
         end
-
     end
 end

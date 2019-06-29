@@ -1,0 +1,10 @@
+
+
+
+<%= form_for(@workout_entry, url: user_workout_workout_entry_start_path(current_user, @workout, @workout_entry)) do |f| %>
+                <%= f.submit "Start Workout Now" %>
+            <% end %>
+
+            <%= form_for(@workout_entry, url: user_workout_workout_entry_stop_path(current_user, @workout, @workout_entry)) do |f| %>
+                <%= f.submit "Stop Workout Now" %>
+            <% end %>        

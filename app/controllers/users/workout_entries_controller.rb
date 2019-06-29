@@ -1,5 +1,5 @@
 module Users 
-    class Users::WorkoutEntriesController < ApplicationController
+    class WorkoutEntriesController < ApplicationController
         # READ
         def index
             @user = User.find(params[:user_id])
@@ -18,12 +18,23 @@ module Users
             end
             redirect_to user_workouts_path(current_user)
         end
+        
+        def new 
+            @workout = Workout.find(params[:workout_id])
+        end
 
         # DESTROY
         def destroy
             @workout = Workout.find(params[:id])
             @workout.destroy
             redirect_to user_workouts_path
+        end
+
+
+        def start
+        end
+
+        def stop
         end
     end    
 end

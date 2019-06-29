@@ -1,0 +1,42 @@
+<div class="container-fluid main pb-5 mb-5">
+    <div class="row justify-content-center ">
+        <div class="col-sm-10 devise-form rounded bg-dark text-warning">
+            <h1 class="text-light">Edit <%= @exercise_entry.exercise.name%></h1>
+
+            <%= form_for([current_user, @exercise_entry]) do |f| %>
+            <div class="form-group">
+                <%= render 'shared/error_messages', :@profile => @exercise_entry %>
+
+                 <ul class="list-unstyled my-4 list-inline">
+                    <div class="row">
+                        <li class="text-warning list-inline-item col"> Sets</li>
+                        <li class="text-warning list-inline-item col"> Reps</li>
+                        <li class="text-warning list-inline-item col"> Weight</li>
+                    </div>
+                </ul>
+                <span class="d-block">
+                    <ul class="list-unstyled my-4 list-inline">
+                        <div class="row">
+                            <li class="text-light list-inline-item col"> 
+                                <%= f.label :sets%> <%= f.select :sets, (1..100) %>
+                            </li>
+                            <li class="text-light list-inline-item col">
+                                <%= f.label :reps%> <%= f.select :reps, (1..100) %>
+                            </li>
+                            <li class="text-light list-inline-item col">
+                                <%= f.label :weight%> <%= f.select :weight, (5..1000).step(5) %>
+                            </li>
+                        </div>
+                    </ul>
+                </span>
+
+                <%= f.label :comments %>
+                <%= f.text_field :comments, autofocus: true, class: 'form-control'%>
+
+                <%= link_to  "Back", :back, class: "btn btn-outline-warning" %>
+                <%= f.submit "Save", class: "btn btn-outline-warning my-2" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

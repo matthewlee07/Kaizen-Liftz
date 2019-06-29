@@ -1,0 +1,29 @@
+<div class="card-body">
+    <ul class="list-unstyled my-4 list-inline">
+        <div class="row">
+            <li class="text-light list-inline-item col">Exercise</li>
+            <li class="text-warning list-inline-item col"> Sets</li>
+            <li class="text-warning list-inline-item col"> Reps</li>
+            <li class="text-warning list-inline-item col"> Weight</li>
+            <li class="text-warning list-inline-item col"></li>
+        </div>
+    </ul>
+    <span class="d-block">
+        <% workout_entry.exercise_entries.each do |exercise_entry| %>
+            <ul class="list-unstyled my-4 list-inline">
+                <div class="row">
+                    <li class="text-warning list-inline-item col"><%= exercise_entry.exercise.name %></li>
+                    <li class="text-light list-inline-item col"> <%= exercise_entry.sets %></li>
+                    <li class="text-light list-inline-item col"> <%= exercise_entry.reps %></li>
+                    <li class="text-light list-inline-item col"> <%= exercise_entry.weight %></li>
+                    
+                    <li class="text-light list-inline-item col">
+                        <%= link_to 'Edit', edit_user_exercise_entry_path(current_user, exercise_entry),class: "btn btn-outline-warning" %>
+                    </li>
+                </div>
+            </ul>
+            <hr >
+        <% end %>
+    </span>
+</div>
+    
