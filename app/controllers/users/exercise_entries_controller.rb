@@ -3,7 +3,6 @@ module Users
         
         def edit
             @exercise_entry = ExerciseEntry.find(params[:id])
-
         end
 
         def update
@@ -28,4 +27,3 @@ module Users
             end
     end    
 end
-

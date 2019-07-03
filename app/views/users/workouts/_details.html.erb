@@ -7,7 +7,7 @@
         </h1>
     </div>
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionWorkoutEntries">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionWorkoutEntries">
         <div class="card-body">
             <ul class="list-unstyled my-4 list-inline">
                 <div class="row">
@@ -19,8 +19,6 @@
                 </div>
             </ul>
             <span class="d-block">
-                <h5 class="text-danger">TODO: order alphabetically </h5>
-                <h5 class="text-danger">TODO: change url when Edit is clicked</h5>
                 <% @workout.regiments.each do |regiment| %>
                     <ul class="list-unstyled my-4 list-inline">
                         <div class="row">

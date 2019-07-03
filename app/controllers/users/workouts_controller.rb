@@ -9,14 +9,13 @@ module Users
 
         def show
             @workout = Workout.find(params[:id])
-            @workout_entries = @workout.workout_entries
-            
+            @workout_entries = @workout.workout_entries.order(created_at: :desc) 
         end
         # CREATE
         def create
-            @workout = Workout.find(params[:workout][:id])
-            new_workout = current_user.workouts.build(name: @workout.name)
-            @workout.regiments.each do |regiment|
+            workout = Workout.find(params[:workout][:id])
+            new_workout = current_user.workouts.build(name: workout.name)
+            workout.regiments.each do |regiment|
                 new_workout.regiments.build(exercise: regiment.exercise, sets: regiment.sets, reps: regiment.reps)
             end
             new_workout.save!

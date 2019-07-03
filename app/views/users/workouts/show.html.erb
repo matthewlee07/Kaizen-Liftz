@@ -22,7 +22,7 @@
             
             
             <div class="text-center mt-5">
-                <%= link_to 'New Workout Entry', new_user_workout_workout_entry_path(current_user, @workout), class: "btn btn-outline-warning"  %>
+                <%= link_to 'Submit Workout Entry', user_workout_workout_entries_path(current_user, @workout), method: :post, class: "btn btn-outline-warning"  %>
                 <%= link_to 'Back', user_workouts_path, class: "btn btn-outline-warning"  %>
             </div>
         </div>

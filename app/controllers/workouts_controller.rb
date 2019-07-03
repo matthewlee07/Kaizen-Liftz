@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :destroy]
 
     # READ
     def index
