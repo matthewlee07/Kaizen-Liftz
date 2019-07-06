@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
 
     # READ
     def index
@@ -12,7 +12,6 @@ class WorkoutsController < ApplicationController
     
     # CREATE
     def new
-        @exercise_options = Exercise.all.map{|exercise|[exercise.name, exercise.id]}
         @workout = Workout.new
         @workout.regiments.build
     end
@@ -20,7 +19,7 @@ class WorkoutsController < ApplicationController
     def create
         @workout = Workout.new(workout_params)
         if @workout.save
-            redirect_to workouts_path
+            redirect_to @workout
         else
             render :new
         end
@@ -34,17 +33,15 @@ class WorkoutsController < ApplicationController
     def update
         @workout = Workout.find(params[:id])
         if @workout.update_attributes(workout_params)
-
-        redirect_to @workout
+            redirect_to @workout
         else
-        render 'edit'
+            render :edit
         end
     end
 
     # DESTROY
     def destroy
         Workout.find(params[:id]).destroy
-        # if workout has dependent then error page
         redirect_to workouts_url
     end
     
@@ -52,4 +49,5 @@ class WorkoutsController < ApplicationController
     def workout_params
         params.require(:workout).permit(:name, :exercise_id, regiments_attributes: [ :id, :exercise_id, :workout_id, :weight, :sets, :reps, :_destroy])
     end
+
 end

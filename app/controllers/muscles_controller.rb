@@ -1,5 +1,5 @@
 class MusclesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
 
     # READ
     def index
@@ -14,14 +14,14 @@ class MusclesController < ApplicationController
     def create
         @muscle = Muscle.new(muscle_params)
         if @muscle.save
-            redirect_to muscles_path
+            redirect_to @muscle
         else
             render :new
         end
     end
 
     def new
-        @muscle = Muscle.new if @muscle == nil
+        @muscle = Muscle.new
     end  
 
     # UPDATE
@@ -34,18 +34,19 @@ class MusclesController < ApplicationController
         if @muscle.update_attributes(muscle_params)
             redirect_to @muscle
         else
-            render 'edit'
+            render :edit
         end
     end
 
     # DESTROY
     def destroy
         Muscle.find(params[:id]).destroy
-        redirect_to muscles_url
+        redirect_to muscles_path
     end
     
     private
     def muscle_params
         params.require(:muscle).permit(:name)
     end
+
 end

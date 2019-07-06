@@ -1,29 +1,28 @@
 class ExercisesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
+
+    # READ
+    def index
+        @exercises = Exercise.order(name: :asc).paginate(page: params[:page], :per_page => 10)
+    end
+
+    def show
+        @exercise = Exercise.find(params[:id])
+    end
 
     # CREATE
     def create
         @exercise = Exercise.new(exercise_params)
         if @exercise.save            
-            redirect_to exercises_path
+            redirect_to @exercise
         else
             render :new
         end
     end
 
     def new
-        @muscle_options = Muscle.all.map{|muscle|[muscle.name, muscle.id]}
-        @exercise = Exercise.new if @exercise == nil
+        @exercise = Exercise.new
         @exercise.intentions.build
-    end
-
-    # READ
-    def show
-        @exercise = Exercise.find(params[:id])
-    end
-
-    def index
-        @exercises = Exercise.order(name: :asc).paginate(page: params[:page], :per_page => 10)
     end
 
     # UPDATE
@@ -50,4 +49,5 @@ class ExercisesController < ApplicationController
     def exercise_params
         params.require(:exercise).permit(:name, :comments, intentions_attributes: [ :id, :muscle_id, :primary_muscle, :_destroy])
     end
+
 end

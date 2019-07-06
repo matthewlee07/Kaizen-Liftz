@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     # CREATE
     def create
         @user = User.new(user_params)
-        # session[:return_to] ||= request.referer
         if @user.save
             log_in @user
             redirect_to(root_path)
@@ -13,12 +12,7 @@ class UsersController < ApplicationController
     end
 
     def new
-        @user = User.new if @user == nil
-    end
-
-    # READ
-    def show
-        @user = User.find(params[:id])
+        @user = User.new
     end
 
     # UPDATE
@@ -33,21 +27,6 @@ class UsersController < ApplicationController
         else
             render 'edit'
         end
-    end
-
-    # WORKOUT RELATED
-    # READ
-    def get_workouts
-        @user = User.find(params[:id])
-    end
-
-    def show_workout
-        @workout = Workout.find(params[:workout_id])
-    end
-
-    # UPDATE
-    def edit_workout
-        @workout = Workout.find(params[:workout_id])
     end
 
     private

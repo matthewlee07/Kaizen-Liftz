@@ -34,7 +34,7 @@
                     <a href="/workouts/<%=@workout.id %>/edit" class="btn btn-outline-warning">
                         Edit
                     </a>
-                    <%= link_to "delete", @Workout, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
+                    <%= link_to "delete", @workout, method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
                 <% end %>
             </div>
 

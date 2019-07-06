@@ -25,16 +25,8 @@ module Users
 
         # DESTROY
         def destroy
-            @workout = Workout.find(params[:id])
-            @workout.destroy
+            @workout_entry = WorkoutEntry.find(params[:id]).destroy
             redirect_to user_workouts_path
-        end
-
-
-        def start
-        end
-
-        def stop
         end
     end    
 end
