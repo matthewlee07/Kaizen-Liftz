@@ -1,13 +1,11 @@
 <div class="card-body">
-    <h5 class="text-danger">TODO: delete entry button</h5>
-    <h5 class="text-danger">TODO: include comments</h5>
     <span><%= workout_entry.created_at %></span>
     <ul class="list-unstyled my-4 list-inline">
         <div class="row">
-            <li class="text-light list-inline-item col">Exercise</li>
-            <li class="text-warning list-inline-item col"> Sets</li>
-            <li class="text-warning list-inline-item col"> Reps</li>
-            <li class="text-warning list-inline-item col"> Weight</li>
+            <li class="text-light list-inline-item col"> Exercise </li>
+            <li class="text-warning list-inline-item col"> Sets </li>
+            <li class="text-warning list-inline-item col"> Reps </li>
+            <li class="text-warning list-inline-item col"> Weight </li>
             <li class="text-warning list-inline-item col"></li>
         </div>
     </ul>
@@ -24,9 +22,11 @@
                         <%= link_to 'Edit', edit_user_exercise_entry_path(current_user, exercise_entry),class: "btn btn-outline-warning" %>
                     </li>
                 </div>
+                <li class="text-warning list-inline-item pt-4"> Comments: <span class="text-light"><%= exercise_entry.comments %></span></li>
             </ul>
             <hr >
         <% end %>
+        <h5 class="text-danger">TODO: delete entry button</h5>
     </span>
 </div>
     
