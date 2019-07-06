@@ -35,7 +35,7 @@ class ExercisesController < ApplicationController
         if @exercise.update_attributes(exercise_params)
             redirect_to @exercise
         else
-            render 'edit'
+            render :edit
         end
     end
 

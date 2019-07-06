@@ -1,5 +1,5 @@
 <div class="card-body">
-    <span><%= workout_entry.created_at %></span>
+    <span class="text-warning"><%= workout_entry.created_at.strftime("%d %b %Y. %H:%M") %></span>
     <ul class="list-unstyled my-4 list-inline">
         <div class="row">
             <li class="text-light list-inline-item col"> Exercise </li>
@@ -27,7 +27,7 @@
             <hr >
         <% end %>
         <div class="text-center">
-            <h5>delete workout entry</h5>
+            <%# <%= link_to "Delete Workout Entry", user_workout_workout_entry_path(current_user, @workout), method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
         </div>
     </span>
 </div>

@@ -10,7 +10,7 @@ module Users
             if @exercise_entry.update_attributes(exercise_params)
                 redirect_to user_workout_path(current_user, @exercise_entry.workout_entry.workout)
                 else
-                render 'edit'
+                    render :edit
                 end
         end
 

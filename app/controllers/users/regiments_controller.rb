@@ -1,6 +1,7 @@
 module Users
     class RegimentsController < ApplicationController
 
+        # UPDATE
         def edit
             @regiment = Regiment.find(params[:id])
         end
@@ -10,7 +11,7 @@ module Users
             if @regiment.update_attributes(regiment_params)
                 redirect_to user_workout_path(current_user, @regiment.workout)
             else
-                render 'edit'
+                render :edit
             end
         end
 
