@@ -26,7 +26,6 @@
                             <li class="text-light list-inline-item col"> <%= regiment.sets %></li>
                             <li class="text-light list-inline-item col"> <%= regiment.reps %></li>
                             <li class="text-light list-inline-item col"> <%= regiment.weight %></li>
-                            
                             <li class="text-light list-inline-item col">
                                 <%= link_to 'Edit', edit_user_regiment_path(current_user, regiment),class: "btn btn-outline-warning"%>
                             </li>
@@ -35,6 +34,9 @@
                     <hr >
                 <% end %>
             </span>
+            <div class="text-center">
+                <%= link_to 'Submit Workout Entry', user_workout_workout_entries_path(current_user, @workout), method: :post, class: "btn btn-outline-light"  %>
+            </div>
         </div>
     </div>
 </div>
