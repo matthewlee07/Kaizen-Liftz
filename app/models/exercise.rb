@@ -21,8 +21,7 @@ class Exercise < ApplicationRecord
 
     def has_muscle_requirements
       errors.add(:muscle, "is required") unless intentions.map(&:muscle_id).any?
-      errors.add(:primary_muscle, "is required") unless intentions.map(&:primary_muscle).any?
-      # question: should this be in intentions model?
+      errors.add(:primary_muscle, "is required") unless intentions.any?(&:primary_muscle?)
       if intentions.map(&:muscle_id).uniq != intentions.map(&:muscle_id)
         errors.add(:muscles, "not unique")
       end

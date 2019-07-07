@@ -30,4 +30,11 @@ class WorkoutTest < ActiveSupport::TestCase
         @workout.save
         assert_not duplicate_workout.valid?
     end
+
+    test "exercise requirement validation" do 
+        @workout.regiments.destroy_all
+        assert_not @workout.valid?
+        assert_equal ["is required"], @workout.errors.messages[:exercise]
+    end
+
 end

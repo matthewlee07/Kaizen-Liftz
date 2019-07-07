@@ -5,10 +5,6 @@ class ExerciseTest < ActiveSupport::TestCase
         @exercise = exercises(:one)
     end
 
-    test "should be valid" do
-        assert @exercise.valid?
-    end
-
     # field should be present
     test "name should be present" do
         @exercise.name = " " 
@@ -34,4 +30,25 @@ class ExerciseTest < ActiveSupport::TestCase
         @exercise.save
         assert_not duplicate_exercise.valid?
     end
+
+    test "muscle requirement validation" do 
+        @exercise.intentions.destroy_all
+        assert_not @exercise.valid?
+        assert_equal ["is required"], @exercise.errors.messages[:muscle]
+    end
+
+    test "primary muscle requirement validation" do 
+        @exercise.intentions.destroy_all
+        @exercise.intentions.create(muscle: muscles(:one), primary_muscle: false)
+        assert_not @exercise.valid? 
+        assert_equal ["is required"], @exercise.errors.messages[:primary_muscle]
+    end
+
+    test "muscles should be unique validation" do
+        @exercise.intentions.destroy_all
+        @exercise.intentions.build(muscle: muscles(:one), primary_muscle: true)
+        @exercise.intentions.build(muscle: muscles(:one), primary_muscle: true)
+        assert_not @exercise.valid? 
+        assert_equal ["not unique"], @exercise.errors.messages[:muscles]
+    end 
 end
