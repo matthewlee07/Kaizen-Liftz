@@ -27,7 +27,7 @@
             <hr >
         <% end %>
         <div class="text-center">
-            <%# <%= link_to "Delete Workout Entry", user_workout_workout_entry_path(current_user, @workout), method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
+            <%= link_to "Delete Workout Entry", user_workout_workout_entry_path(current_user, workout_entry.workout, workout_entry), method: :delete, data: { confirm: "You sure?" }, class: ["btn","btn-danger"] %>
         </div>
     </span>
 </div>
